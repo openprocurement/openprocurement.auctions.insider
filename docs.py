@@ -16,7 +16,7 @@ now = datetime.now()
 
 test_auction_data = base_test_auction_data.copy()
 test_financial_auction_data = test_auction_data.copy()
-test_financial_auction_data["procurementMethodType"] = "dgfFinancialAssets"
+
 
 bid = {
     "data": {

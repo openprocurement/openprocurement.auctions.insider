@@ -61,7 +61,7 @@ Documentation of related packages
 API stability
 -------------
 
-API is highly unstable, and while API endpoints are expected to remain
+API is relatively stable, and while API endpoints are expected to remain
 relatively stable the data exchange formats are expected to be changed a
 lot.  The changes in the API are communicated via `Open Procurement API
 <https://groups.google.com/group/open-procurement-api>`_ maillist.

@@ -1,12 +1,14 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.0.1'
+version = '0.1.dev0'
 
 entry_points = {
     'openprocurement.auctions.core.plugins': [
+        'auctions.insider = openprocurement.auctions.insider:includeme'
     ],
     'openprocurement.api.migrations': [
+        'auctions = openprocurement.auctions.insider.migration:migrate_data'
     ]
 }
 
@@ -14,8 +16,7 @@ requires = [
     'setuptools',
     'openprocurement.api',
     'openprocurement.auctions.core',
-    'openprocurement.auctions.flash',
-    'openprocurement.auctions.insider'
+    'openprocurement.schemas.dgf',
     'schematics-flexible'
 ]
 
@@ -23,7 +24,7 @@ docs_requires = requires + [
     'sphinxcontrib-httpdomain',
 ]
 
-setup(name='openprocurement.auctions.insider',
+setup(name='openprocurement.auctions.dutch',
       version=version,
       description="",
       long_description=open("README.rst").read() + "\n" +
