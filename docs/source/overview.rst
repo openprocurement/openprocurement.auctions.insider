@@ -15,8 +15,8 @@ Features
 * The only currency (*Value.currency*) for this procedure is hryvnia (UAH).
 * Auction consists of 3 stages: Dutch auction, sealed bid and best bid parts.
 * Auction is passing within a day.
-* *Auction.value* is gradually decreasing during the Dutch part.
-* In case of no bid has been made within Dutch auction, the whole procedure will be marked as invalid.
+* *Auction.value* is gradually decreasing per 1% during the Dutch part.
+* In case of no bid has been made within Dutch auction, the whole procedure will be marked as unsuccessful.
 * Bidders can enter the auction till the end of the Dutch part.
 
 
@@ -51,6 +51,7 @@ Project status
 The project has pre alpha status.
 
 The source repository for this project is on GitHub: 
+`<https://github.com/openprocurement/openprocurement.auctions.insider>`_.
  
 
 Documentation of related packages
@@ -61,10 +62,9 @@ Documentation of related packages
 API stability
 -------------
 
-API is relatively stable, and while API endpoints are expected to remain
-relatively stable the data exchange formats are expected to be changed a
-lot.  The changes in the API are communicated via `Open Procurement API
-<https://groups.google.com/group/open-procurement-api>`_ maillist.
+API is relatively stable. The changes in the API are communicated via 
+`Open Procurement API <https://groups.google.com/group/open-procurement-api>`_ 
+maillist.
 
 
 Next steps
