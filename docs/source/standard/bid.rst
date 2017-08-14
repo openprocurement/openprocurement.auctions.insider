@@ -54,11 +54,7 @@ Schema
 :qualified:
     bool, required
 
-:eligible:
-    bool
-
-    Required for `dgfFinancialAssets` procedure.
-
+    
 .. _Parameter:
 
 Parameter

@@ -14,19 +14,16 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Lokalize 2.0\n"
 
-#: ../../source/acceleration.rst:4
 msgid "Acceleration mode for sandbox"
 msgstr "Режим прискорення в пісочниці"
 
-#: ../../source/acceleration.rst:8
 msgid ""
-"Acceleration mode was developed to enable `dgfOtherAssets` procedure testing"
+"Acceleration mode was developed to enable the procedure testing"
 " in the sandbox and to reduce time frames of this procedure."
 msgstr ""
-"Для зменшення термінів і забезпечення можливості тестування `dgfOtherAssets`"
+"Для зменшення термінів і забезпечення можливості тестування"
 " процедури на пісочниці доступний режим прискорення."
 
-#: ../../source/acceleration.rst:6
 msgid ""
 "If you want to experiment with auctions, you can use acceleration mode and "
 "start your auction name with \"TESTING\"."
