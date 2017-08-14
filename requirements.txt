@@ -5,7 +5,7 @@ MarkupSafe==0.23
 PasteDeploy==1.5.2
 PyYAML==3.11
 Pygments==2.0.2
-# Sphinx==1.3.1
+Sphinx==1.3.1
 WebOb==1.4.1
 WebTest==2.0.18
 beautifulsoup4==4.3.2
@@ -45,6 +45,7 @@ zope.deprecation==4.1.1
 zope.interface==4.1.1
 git+https://github.com/openprocurement/python-json-patch.git
 git+https://github.com/openprocurement/rfc6266.git
+git+https://github.com/openprocurement/barbecue.git
 git+https://github.com/openprocurement/openprocurement.api.git@master#egg=openprocurement.api
 git+https://github.com/openprocurement/openprocurement.auctions.core.git@master#egg=openprocurement.auctions.core
 git+https://github.com/openprocurement/openprocurement.auctions.flash.git@master#egg=openprocurement.auctions.flash
