@@ -13,8 +13,7 @@ Welcome to openprocurement.auctions.dutch documentation!
 
 Please report any problems or suggestions for improvement either via the
 `mailing list <http://groups.google.com/group/open-procurement-general>`_ or
-the `issue tracker
-<https://github.com/openprocurement/openprocurement.auctions.dutch/issues>`_.
+the `issue tracker <https://github.com/openprocurement/openprocurement.auctions.dutch/issues>`_.
 
 Contents:
 
