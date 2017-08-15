@@ -27,22 +27,12 @@ Schema
 
    |ocdsDescription|
    AuctionID should always be the same as the OCID. It is included to make the flattened data structure more convenient.
-   
-:dgfID:
-    string, required
-    
-    Identification number of the auction (also referred to as `lot`) in the XLS of Deposit Guarantee Fund.
     
 :procurementMethodType:
     string, required
     
     Auction announcement. 
-    Possible values:
-    
-    * ``dgfOtherAssets`` - sale of the insolvent bank property
-    * ``dgfFinancialAssets`` - sale of the creditor claim right
 
-   
 :procuringEntity:
    :ref:`ProcuringEntity`, required
 
@@ -55,12 +45,12 @@ Schema
 :tenderAttempts:
     integer
 
-    The number which represents what time (from 1 up to 8) tender is taking place.
+    The number which represents what time tender is taking place.
 
 :value:
    :ref:`value`, required
 
-   Auction starting price. Bids lower than ``value`` will be rejected.
+   Auction starting price.
 
    |ocdsDescription|
    The total estimated value of the procurement.
@@ -106,15 +96,6 @@ Schema
 
    |ocdsDescription|
    A list of all the companies who entered submissions for the auction.
-
-:minimalStep:
-   :ref:`value`, required
-
-   Auction step (increment). Validation rules:
-
-   * `amount` should be greater than `Auction.value.amount`
-   * `currency` should either be absent or match `Auction.value.currency`
-   * `valueAddedTaxIncluded` should either be absent or match `Auction.value.valueAddedTaxIncluded`
 
 :awards:
     List of :ref:`award` objects
@@ -177,24 +158,6 @@ Schema
        Cancelled auction (cancelled)
 
    Auction status.
-
-:eligibilityCriteria:
-    string, read-only
-    
-    Required for `dgfFinancialAssets` procedure.
-    
-    This field is multilingual: 
-    
-    * Ukrainian by default - До участі допускаються лише ліцензовані фінансові установи.
-    
-    * ``eligibilityCriteria_ru`` (Russian) - К участию допускаются только лицензированные финансовые учреждения.
-    
-    * ``eligibilityCriteria_en`` (English) - Only licensed financial institutions are eligible to participate.
-    
-.. :lots:
-   List of :ref:`lot` objects.
-
-   Contains all auction lots.
 
 :cancellations:
    List of :ref:`cancellation` objects.

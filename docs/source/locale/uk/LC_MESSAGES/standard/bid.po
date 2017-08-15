@@ -72,89 +72,42 @@ msgstr ""
 "Значення `valueAddedTaxIncluded` повинно бути або відсутнім, або співпадати "
 "з `Auction.value.valueAddedTaxIncluded`"
 
-#: ../../source/standard/bid.rst:42
 msgid "List of :ref:`Document` objects"
 msgstr "Список об’єктів :ref:`Document`"
 
-#: ../../source/standard/bid.rst:45
 msgid "List of :ref:`Parameter` objects"
 msgstr "Список об’єктів :ref:`Parameter`"
 
-#: ../../source/standard/bid.rst:53
 msgid "A web address for participation in auction."
 msgstr "Веб-адреса для участі в аукціоні."
 
-#: ../../source/standard/bid.rst:66
 msgid "Parameter"
 msgstr "Parameter"
 
-#: ../../source/standard/bid.rst:72
 msgid "string, required"
 msgstr "рядок, обов’язковий"
 
-#: ../../source/standard/bid.rst:77
 msgid "float, required"
 msgstr "float, обов’язково"
 
-#: ../../source/standard/bid.rst:22
 msgid "UID, auto-generated"
 msgstr "UID, генерується автоматично"
 
-#: ../../source/standard/bid.rst:51
 msgid "URL"
 msgstr "URL-адреса"
 
-#: ../../source/standard/bid.rst:74
 msgid "Feature code."
 msgstr "Код критерію."
 
-#: ../../source/standard/bid.rst:79
 msgid "Feature value."
 msgstr "Значення критерію."
 
-#: ../../source/standard/bid.rst:56
 msgid "bool, required"
 msgstr "булеве значення, обов'язково"
 
-#: ../../source/standard/bid.rst:59
 msgid "bool"
 msgstr "булеве значення"
 
-#: ../../source/standard/bid.rst:19
 msgid "Date when bid has been submitted."
 msgstr "Дата подачі пропозиції."
 
-#: ../../source/standard/bid.rst:61
-msgid "Required for `dgfFinancialAssets` procedure."
-msgstr ""
-"Необхідно для `dgfFinancialAssets` процедури (продаж права вимоги за "
-"кредитними договорами)."
-
-#~ msgid "List of :ref:`LotValue` objects"
-#~ msgstr "Список об’єктів :ref:`LotValue`"
-
-#~ msgid "required for dgfFinancialAssets procedure"
-#~ msgstr ""
-#~ "обов'язково для dgfFinancialAssets процедури (продаж права вимоги за "
-#~ "кредитними договорами)"
-
-#~ msgid "LotValue"
-#~ msgstr "LotValue"
-
-#~ msgid "`amount` should be less than `Lot.value.amout`"
-#~ msgstr "Значення `amount` повинно бути меншим за `Lot.value.amout`"
-
-#~ msgid "`currency` should either be absent or match `Lot.value.currency`"
-#~ msgstr ""
-#~ "Значення `currency` повинно бути або відсутнім, або співпадати з "
-#~ "`Lot.value.currency`"
-
-#~ msgid ""
-#~ "`valueAddedTaxIncluded` should either be absent or match "
-#~ "`Lot.value.valueAddedTaxIncluded`"
-#~ msgstr ""
-#~ "`valueAddedTaxIncluded` повинно або бути відсутнім, або відповідати "
-#~ "`Lot.value.valueAddedTaxIncluded`"
-
-#~ msgid "ID of related :ref:`lot`."
-#~ msgstr "ID пов’язаного :ref:`lot`."

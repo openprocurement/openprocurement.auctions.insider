@@ -31,7 +31,7 @@ import pkg_resources
 # ones.
 import cornice
 extensions = [
-    'cornice.ext.sphinxext',
+#    'cornice.ext.sphinxext',
     'sphinx.ext.intersphinx',
     'sphinx.ext.graphviz',
     'sphinxcontrib.httpdomain',
@@ -50,7 +50,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'openprocurement.auctions.dgf'
+project = u'openprocurement.auctions.dutch'
 copyright = u'2016, Quintagroup, Ltd'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -183,7 +183,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'openprocurementauctionsdgfdoc'
+htmlhelp_basename = 'openprocurementauctionsdutchdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -203,7 +203,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'openprocurementauctionsdgf.tex', u'openprocurement.auctions.dgf Documentation',
+  ('index', 'openprocurementauctionsdutch.tex', u'openprocurement.auctions.dutch Documentation',
    u'Myroslav Opyr', 'manual'),
 ]
 
@@ -233,8 +233,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'openprocurementauctionsdgf', u'openprocurement.auctions.dgf Documentation',
-     [u'Myroslav Opyr'], 1)
+    ('index', 'openprocurementauctionsdutch', u'openprocurement.auctions.dutch Documentation',
+     [u'Myroslav Opyr', u'Leits'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -247,8 +247,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'openprocurementauctionsdgf', u'openprocurement.auctions.dgf Documentation',
-   u'Myroslav Opyr', 'openprocurementauctionsdgf', 'One line description of project.',
+  ('index', 'openprocurementauctionsdutch', u'openprocurement.auctions.dutch Documentation',
+   u'Myroslav Opyr', 'openprocurementauctionsdutch', 'One line description of project.',
    'Miscellaneous'),
 ]
 

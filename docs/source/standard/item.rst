@@ -20,7 +20,6 @@ Schema
     |ocdsDescription|
     A description of the goods, services to be provided.
     
-    Brief description of property (for ``dgfOtherAssets``) or asset(s) (for ``dgfFinancialAssets``).
     
 :classification:
     :ref:`Classification`
@@ -32,13 +31,6 @@ Schema
 
     It is required for `classification.scheme` to be `CAV`. The
     `classification.id` should be valid CAV code.
-
-:schema_properties:
-    :ref:`SchemaProperties`
-    
-    |ocdsDescription| 
-    A detailed specification of the fields and data structures 
-    to use when publishing contracting data.
 
 :additionalClassifications:
     List of :ref:`Classification` objects
@@ -144,24 +136,3 @@ Schema
 
     |ocdsDescription|
     Name of the unit
-
-.. _SchemaProperties:
-
-SchemaProperties
-================
-
-Schema
-------
-
-:code:
-    string, required, should match classification.id
-    
-:version:
-    string, optional, identifies the scheme version 
-    
-    If not specified, the latest version will be used.
-    
-:properties:
-    dictionary, match the version and code used
-    
-    The detailed description is given here: http://schemas.api-docs.ea.openprocurement.io/en/latest/

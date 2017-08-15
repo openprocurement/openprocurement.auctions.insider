@@ -1,25 +1,24 @@
 Overview
 ========
 
-openprocurement.auctions.dgf contains documentaion for Deposit Guarantee Fund auctions.
-
-There are two procedures:
- 
- * dgfOtherAssets - sale of the insolvent bank property.
- 
- * dgfFinancialAssets - sale of the creditor claim right.
+openprocurement.auctions.dutch contains documentaion for Deposit Guarantee Fund auctions.
 
 
 Features
 --------
 
-* No need to specify enquiries period (there is no *active.enquiries* status), since it overlaps with *active.tendering* period.
 * Procedure can be switched from *draft* status to *active.tendering*.
 * During *active.tendering* period participants can ask questions, submit proposals, and upload documents.
 * The only date Organizer has to provide is *Tender.auctionPeriod.startDate*, the rest will be calculated automatically.
 * Organizer can't edit procedure's significant properties (*Auction.value*, etc.).
-* There is obligatory participant qualification (*Bid.selfQualified*) via guarantee payment.
+* There is obligatory participant qualification (*Bid.selfQualified*) via guarantee payment. It has to be paid till 16:00 of the auction day.
 * The only currency (*Value.currency*) for this procedure is hryvnia (UAH).
+* Auction consists of 3 stages: Dutch auction, sealed bid and best bid parts.
+* Auction is passing within a day.
+* *Auction.value* is gradually decreasing per 1% during the Dutch part.
+* In case of no bid has been made within Dutch auction, the whole procedure will be marked as unsuccessful.
+* Bidders can enter the auction till the end of the Dutch part.
+
 
 Conventions
 -----------
@@ -45,19 +44,15 @@ code and the JSON returned will have an `errors` field at the top level
 containing a list of problems.  We look at the first one and print out its
 message.
 
-Main responsibilities
----------------------
 
 Project status
 --------------
 
-The project has beta status.
+The project has pre alpha status.
 
-The source repository for this project is on GitHub: https://github.com/openprocurement/openprocurement.auctions.dgf
-
-You can leave feedback by raising a new issue on the `issue tracker
-<https://github.com/openprocurement/openprocurement.auctions.dgf/issues>`_ (GitHub
-registration necessary).  
+The source repository for this project is on GitHub: 
+`<https://github.com/openprocurement/openprocurement.auctions.insider>`_.
+ 
 
 Documentation of related packages
 ---------------------------------
@@ -67,16 +62,9 @@ Documentation of related packages
 API stability
 -------------
 
-API is relatively stable. The changes in the API are communicated via `Open Procurement API
-<https://groups.google.com/group/open-procurement-api>`_ maillist.
-
-Change log
-----------
-
-0.1
-~~~
-
-Released: not released
+API is relatively stable. The changes in the API are communicated via 
+`Open Procurement API <https://groups.google.com/group/open-procurement-api>`_ 
+maillist.
 
 
 Next steps

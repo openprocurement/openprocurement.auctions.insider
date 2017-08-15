@@ -14,15 +14,12 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Lokalize 2.0\n"
 
-#: ../../source/overview.rst:2
 msgid "Overview"
 msgstr "Огляд"
 
-#: ../../source/overview.rst:25
 msgid "Conventions"
 msgstr "Домовленості"
 
-#: ../../source/overview.rst:43
 msgid ""
 "If something went wrong during the request, we'll get a different status "
 "code and the JSON returned will have an `errors` field at the top level "
@@ -33,102 +30,58 @@ msgstr ""
 "який при поверненні міститиме `errors` поле на верхньому рівні зі списком "
 "проблем. Ми дивимось на першу з них і видруковуємо її повідомлення."
 
-#: ../../source/overview.rst:49
 msgid "Main responsibilities"
 msgstr "Основні задачі"
 
-#: ../../source/overview.rst:55
 msgid "Project status"
 msgstr "Стан проекту"
 
-#: ../../source/overview.rst:57
-msgid "The project has beta status."
-msgstr "Статус цього проекту - бета."
+msgid "The project has pre alpha status."
+msgstr "Статус цього проекту пре-альфа."
 
-#: ../../source/overview.rst:59
 msgid ""
 "The source repository for this project is on GitHub: "
-"https://github.com/openprocurement/openprocurement.auctions.dgf"
+"`<https://github.com/openprocurement/openprocurement.auctions.insider>`_"
 msgstr ""
 "Репозиторій джерельних текстів цього проекту є на `GitHub "
-"<https://github.com/openprocurement/openprocurement.auctions.dgf>`_."
+"<https://github.com/openprocurement/openprocurement.auctions.insider>`_."
 
-#: ../../source/overview.rst:61
-msgid ""
-"You can leave feedback by raising a new issue on the `issue tracker "
-"<https://github.com/openprocurement/openprocurement.auctions.dgf/issues>`_ "
-"(GitHub registration necessary)."
-msgstr ""
-"Повідомляйте про всі проблеми та поради через `issue tracker "
-"<https://github.com/openprocurement/openprocurement.auctions.dgf/issues>`_ "
-"(реєстрація на GitHub обов’язкова)."
-
-#: ../../source/overview.rst:66
 msgid "Documentation of related packages"
 msgstr "Документація пов’язаних пакетів"
 
-#: ../../source/overview.rst:68
 msgid ""
 "`OpenProcurement API <http://api-docs.openprocurement.org/en/latest/>`_"
 msgstr ""
 "`OpenProcurement API <http://api-docs.openprocurement.org/en/latest/>`_"
 
-#: ../../source/overview.rst:71
 msgid "API stability"
 msgstr "Стабільність API"
 
-#: ../../source/overview.rst:73
 msgid ""
-"API is relatively stable. "
-"The changes in the API are communicated via `Open Procurement API "
-"<https://groups.google.com/group/open-procurement-api>`_ maillist."
+"API is relatively stable. The changes in the API are communicated via "
+"`Open Procurement API <https://groups.google.com/group/open-procurement-api>`_ "
+"maillist."
 msgstr ""
 "API є відносно стабільним. "
 "Зміни в API обговорюються через `Open Procurement API "
 "<https://groups.google.com/group/open-procurement-api>`_ розсилку."
 
-#: ../../source/overview.rst:79
-msgid "Change log"
-msgstr "Звіт про зміни"
-
-#: ../../source/overview.rst:82
-msgid "0.1"
-msgstr "0.1"
-
-#: ../../source/overview.rst:84
-msgid "Released: not released"
-msgstr "Випущено: не випущено"
-
-#: ../../source/overview.rst:88
 msgid "Next steps"
 msgstr "Наступні кроки"
 
-#: ../../source/overview.rst:4
 msgid ""
-"openprocurement.auctions.dgf contains documentaion for Deposit Guarantee "
+"openprocurement.auctions.dutch contains documentaion for Deposit Guarantee "
 "Fund auctions."
 msgstr ""
-"openprocurement.auctions.dgf містить документацію по аукціонах Фонду "
+"openprocurement.auctions.dutch містить документацію по аукціонах Фонду "
 "гарантування вкладів."
 
-#: ../../source/overview.rst:14
 msgid "Features"
 msgstr "Особливості"
 
-#: ../../source/overview.rst:16
-msgid ""
-"No need to specify enquiries period (there is no *active.enquiries* status),"
-" since it overlaps with *active.tendering* period."
-msgstr ""
-"Відсутність необхідності вказання періоду уточнень (тут немає окремого "
-"статусу *active.enquiries*), оскільки він накладається на період прийому "
-"пропозицій *active.tendering*."
-
-#: ../../source/overview.rst:17
 msgid "Procedure can be switched from *draft* status to *active.tendering*."
 msgstr "Процедура переходить зі статусу *draft* до *active.tendering*."
 
-#: ../../source/overview.rst:18
 msgid ""
 "During *active.tendering* period participants can ask questions, submit "
 "proposals, and upload documents."
@@ -136,19 +89,24 @@ msgstr ""
 "Протягом періоду *active.tendering* учасники можуть задавати питання, "
 "подавати пропозиції, завантажувати документи."
 
-#: ../../source/overview.rst:21
+msgid ""
+"The only date Organizer has to provide is *Tender.auctionPeriod.startDate*, "
+"the rest will be calculated automatically."
+msgstr ""
+"Єдина дата, яку потрібно надати, це дата початку аукціону "
+"*Tender.auctionPeriod.startDate*. Всі решта дати будуть обраховані на її "
+"основі."
+
 msgid ""
 "There is obligatory participant qualification (*Bid.selfQualified*) via "
-"guarantee payment."
+"guarantee payment. It has to be paid till 16:00 of the auction day."
 msgstr ""
 "Обов’язкова кваліфікація учасника (*Bid.selfQualified*) через гарантійний "
-"платіж."
+"платіж. Гарантійний внесок має бути сплачений до 16:00 дня проведення аукціону."
 
-#: ../../source/overview.rst:89
 msgid "You might find it helpful to look at the :ref:`tutorial`."
 msgstr "Можливо вам буде цікаво прочитати :ref:`tutorial`."
 
-#: ../../source/overview.rst:32
 msgid ""
 "All API POST and PUT requests expect a top-level object with a single "
 "element in it named `data`.  Successful responses will mirror this format. "
@@ -162,7 +120,6 @@ msgstr ""
 "містить параметри запиту. Якщо створюється новий аукціон, то це ті поля, які"
 " ми хочемо встановити на самому аукціоні."
 
-#: ../../source/overview.rst:38
 msgid ""
 "If the request was successful, we will get a response code of `201` "
 "indicating the object was created.  That response will have a data field at "
@@ -173,7 +130,6 @@ msgstr ""
 "об’єкт був створений. Ця відповідь буде мати data поле на верхньому рівні, "
 "яке вміщуватиме повну інформацію про новий аукціон, включно з ID."
 
-#: ../../source/overview.rst:20
 msgid ""
 "Organizer can't edit procedure's significant properties (*Auction.value*, "
 "etc.)."
@@ -181,21 +137,10 @@ msgstr ""
 "Організатор не може редагувати суттєвих властивостей процедури, наприклад, "
 "*Auction.value*."
 
-#: ../../source/overview.rst:19
-msgid ""
-"The only date Organizer has to provide is *Tender.auctionPeriod.startDate*, "
-"the rest will be calculated automatically."
-msgstr ""
-"Єдина дата, яку потрібно надати, це дата початку аукціону "
-"*Tender.auctionPeriod.startDate*. Всі решта дати будуть обраховані на її "
-"основі."
-
-#: ../../source/overview.rst:22
 msgid ""
 "The only currency (*Value.currency*) for this procedure is hryvnia (UAH)."
 msgstr "Єдина валюта (*Value.currency*) цієї процедури - гривня UAH."
 
-#: ../../source/overview.rst:27
 msgid ""
 "API accepts `JSON <http://json.org/>`_ or form-encoded content in requests."
 "  It returns JSON content in all of its responses, including errors.  Only "
@@ -205,22 +150,33 @@ msgstr ""
 " повертає JSON вміст у всіх свої відповідях, включно з помилками. "
 "Підтримується лише UTF-8 кодування і для запитів, і для відповідей."
 
-#: ../../source/overview.rst:6
-msgid "There are two procedures:"
-msgstr "Є дві процедури:"
+msgid "Auction consists of 3 stages: Dutch auction, sealed bid and best bid parts."
+msgstr "Аукціон проводиться у три етапи: Голландський аукціон, sealed bid та "
+"best bid частини."
 
-#: ../../source/overview.rst:8
-msgid "dgfOtherAssets - sale of the insolvent bank property."
-msgstr "dgfOtherAssets - оголошення аукціону з продажу майна банків."
+msgid "Auction is passing within a day."
+msgstr "Аукціон проходить упродовж дня."
 
-#: ../../source/overview.rst:10
-msgid "dgfFinancialAssets - sale of the creditor claim right."
+msgid "*Auction.value* is gradually decreasing per 1% during the Dutch part."
+msgstr "*Auction.value* поступово знижується на 1% протягом Голландського етапу."
 
-msgstr "dgfFinancialAssets - продаж права вимоги за кредитними договорами."
-msgstr ""
-"dgfFinancialAssets - оголошення аукціону з продажу прав вимоги за кредитами."
+msgid "In case of no bid has been made within Dutch auction, the whole "
+"procedure will be marked as unsuccessful."
+msgstr "Якщо жоден учкасник не зробить цінової пропозиції під час Голландського аукціону, "
+"процедура вважається неуспішною."
 
-#~ msgid ""
-#~ "The items within an auction are allowed to be from different CAV groups."
-#~ msgstr "Аукціон може містити елементи з різних CAV груп."
+msgid "Bidders can enter the auction till the end of the Dutch part."
+msgstr "Учасники можуть долучатися до аукціону аж до завершення Голландського етапу."
+
+
+
+
+
+
+
+
+
+
+
+
 

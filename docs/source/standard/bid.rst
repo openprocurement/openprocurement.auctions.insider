@@ -34,7 +34,6 @@ Schema
 
     Validation rules:
 
-    * `amount` should be less than `Auction.value.amout`
     * `currency` should either be absent or match `Auction.value.currency`
     * `valueAddedTaxIncluded` should either be absent or match `Auction.value.valueAddedTaxIncluded`
 
@@ -55,11 +54,7 @@ Schema
 :qualified:
     bool, required
 
-:eligible:
-    bool
-
-    Required for `dgfFinancialAssets` procedure.
-
+    
 .. _Parameter:
 
 Parameter
@@ -78,32 +73,4 @@ Schema
 
     Feature value.
 
-.. _LotValue:
 
-.. LotValue
-   ========
-
-   Schema
-   ------
-
-   :value:
-    :ref:`Value`, required
-
-    Validation rules:
-
-    * `amount` should be less than `Lot.value.amout`
-    * `currency` should either be absent or match `Lot.value.currency`
-    * `valueAddedTaxIncluded` should either be absent or match `Lot.value.valueAddedTaxIncluded`
-
-   :relatedLot:
-    string
-
-    ID of related :ref:`lot`.
-
-   :date:
-    string, :ref:`date`, auto-generated
-
-   :participationUrl:
-    URL
-
-    A web address for participation in auction.
