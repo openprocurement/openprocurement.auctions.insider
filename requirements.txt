@@ -51,3 +51,4 @@ git+https://github.com/openprocurement/openprocurement.auctions.core.git@master#
 git+https://github.com/openprocurement/openprocurement.auctions.flash.git@master#egg=openprocurement.auctions.flash
 git+https://github.com/openprocurement/schematics-flexible.git@master#egg=schematics-flexible
 git+https://github.com/openprocurement/openprocurement.schemas.dgf.git@master#egg=openprocurement.schemas.dgf
+git+https://github.com/openprocurement/openprocurement.auctions.dgf.git
