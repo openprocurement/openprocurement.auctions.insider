@@ -150,33 +150,43 @@ msgstr ""
 " повертає JSON вміст у всіх свої відповідях, включно з помилками. "
 "Підтримується лише UTF-8 кодування і для запитів, і для відповідей."
 
-msgid "Auction consists of 3 stages: Dutch auction, sealed bid and best bid parts."
-msgstr "Аукціон проводиться у три етапи: Голландський аукціон, sealed bid та "
-"best bid частини."
+msgid ""
+"Auction consists of 3 stages: Dutch auction, sealed bid and best bid parts."
+msgstr ""
+"Аукціон проводиться у три етапи: Голландський аукціон, sealed bid та best "
+"bid частини."
 
 msgid "Auction is passing within a day."
 msgstr "Аукціон проходить упродовж дня."
 
 msgid "*Auction.value* is gradually decreasing per 1% during the Dutch part."
-msgstr "*Auction.value* поступово знижується на 1% протягом Голландського етапу."
+msgstr ""
+"*Auction.value* поступово знижується на 1% протягом Голландського етапу."
 
-msgid "In case of no bid has been made within Dutch auction, the whole "
-"procedure will be marked as unsuccessful."
-msgstr "Якщо жоден учкасник не зробить цінової пропозиції під час Голландського аукціону, "
-"процедура вважається неуспішною."
+msgid ""
+"In case of no bid has been made within Dutch auction, the whole procedure "
+"will be marked as unsuccessful."
+msgstr ""
+"Якщо жоден учкасник не зробить цінової пропозиції під час Голландського "
+"аукціону, процедура вважається неуспішною."
 
 msgid "Bidders can enter the auction till the end of the Dutch part."
-msgstr "Учасники можуть долучатися до аукціону аж до завершення Голландського етапу."
+msgstr ""
+"Учасники можуть долучатися до аукціону аж до завершення Голландського етапу."
 
+msgid ""
+"The source repository for this project is on GitHub: "
+"`<https://github.com/openprocurement/openprocurement.auctions.insider>`_."
+msgstr ""
+"Репозиторій джерельних текстів цього проекту є на `GitHub "
+"`<https://github.com/openprocurement/openprocurement.auctions.insider>`_."
 
+#~ msgid "Main responsibilities"
+#~ msgstr "Основні задачі"
 
-
-
-
-
-
-
-
-
-
-
+#~ msgid ""
+#~ "The source repository for this project is on GitHub: "
+#~ "`<https://github.com/openprocurement/openprocurement.auctions.insider>`_"
+#~ msgstr ""
+#~ "Репозиторій джерельних текстів цього проекту є на `GitHub "
+#~ "<https://github.com/openprocurement/openprocurement.auctions.insider>`_."
