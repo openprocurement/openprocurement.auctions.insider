@@ -339,7 +339,7 @@ class InsiderAuctionBidderResourceTest(BaseInsiderAuctionWebTest):
         bidder = response.json['data']
         signature = bidder['participationUrl']
         before, sep, sig = signature.partition('signature=')
-        sig = b64decode(unquote(sig))
+        sig = b64decode(unquote(str(sig)))
         signer = Signer('fe3b3b5999a08e68dfe62687c2ae147f62712ceace58c1ffca8ea819eabcb5d1'.decode('hex'))
         ver = Verifier(signer.hex_vk())
         verified = ver.verify(sig + str(bidder['id']))

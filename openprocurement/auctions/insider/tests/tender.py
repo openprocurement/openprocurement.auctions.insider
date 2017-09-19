@@ -611,7 +611,7 @@ class InsiderAuctionResourceTest(BaseInsiderWebTest):
             u'tenderPeriod', u'minimalStep', u'items', u'value', u'procuringEntity', u'next_check', u'dgfID',
             u'procurementMethod', u'awardCriteria', u'submissionMethod', u'title', u'owner', u'auctionPeriod',
             u'eligibilityCriteria', u'eligibilityCriteria_en', u'eligibilityCriteria_ru', 'documents',
-            u'dgfDecisionDate', u'dgfDecisionID', u'tenderAttempts',
+            u'dgfDecisionDate', u'dgfDecisionID', u'tenderAttempts', u'auctionUrl'
         ]))
         self.assertNotEqual(data['id'], auction['id'])
         self.assertNotEqual(data['doc_id'], auction['id'])
@@ -663,7 +663,7 @@ class InsiderAuctionResourceTest(BaseInsiderWebTest):
             self.assertEqual(set(auction) - set(self.initial_data), set([
                 u'id', u'dateModified', u'auctionID', u'date', u'status', u'procurementMethod', 'documents',
                 u'awardCriteria', u'submissionMethod', u'next_check', u'owner', u'enquiryPeriod', u'tenderPeriod',
-                u'eligibilityCriteria_en', u'eligibilityCriteria', u'eligibilityCriteria_ru', u'minimalStep'
+                u'eligibilityCriteria_en', u'eligibilityCriteria', u'eligibilityCriteria_ru', u'minimalStep', u'auctionUrl'
             ]))
         else:
             self.assertEqual(set(auction) - set(self.initial_data), set([
@@ -848,7 +848,8 @@ class InsiderAuctionResourceTest(BaseInsiderWebTest):
         #response = self.app.get('/auctions/{}'.format(auction['id']))
         #self.assertEqual(response.status, '200 OK')
         #self.assertEqual(response.content_type, 'application/json')
-        #self.assertIn('auctionUrl', response.json['data'])
+        self.assertIn('auctionUrl', response.json['data'])
+        self.assertIn(auction['id'], response.json['data']['auctionUrl'])
 
         auction_data = self.db.get(auction['id'])
         auction_data['status'] = 'complete'
@@ -1111,24 +1112,11 @@ class InsiderAuctionProcessTest(BaseInsiderAuctionWebTest):
         self.app.authorization = ('Basic', ('auction', ''))
         response = self.app.get('/auctions/{}/auction'.format(auction_id))
         auction_bids_data = response.json['data']['bids']
-        # posting auction urls
-        response = self.app.patch_json('/auctions/{}/auction'.format(auction_id),
-                                       {
-                                           'data': {
-                                               'auctionUrl': 'https://auction.auction.url',
-                                               'bids': [
-                                                   {
-                                                       'id': i['id'],
-                                                       'participationUrl': 'https://auction.auction.url/for_bid/{}'.format(i['id'])
-                                                   }
-                                                   for i in auction_bids_data
-                                               ]
-                                           }
-        })
-        # view bid participationUrl
+
+        # check bid participationUrl
         self.app.authorization = ('Basic', ('broker', ''))
         response = self.app.get('/auctions/{}/bids/{}?acc_token={}'.format(auction_id, bid_id, bid_token))
-        self.assertEqual(response.json['data']['participationUrl'], 'https://auction.auction.url/for_bid/{}'.format(bid_id))
+        self.assertIn('participationUrl', response.json['data'])
 
         # posting auction results
         self.app.authorization = ('Basic', ('auction', ''))
@@ -1349,24 +1337,11 @@ class InsiderAuctionProcessTest(BaseInsiderAuctionWebTest):
         self.app.authorization = ('Basic', ('auction', ''))
         response = self.app.get('/auctions/{}/auction'.format(auction_id))
         auction_bids_data = response.json['data']['bids']
-        # posting auction urls
-        response = self.app.patch_json('/auctions/{}/auction'.format(auction_id),
-                                       {
-                                           'data': {
-                                               'auctionUrl': 'https://auction.auction.url',
-                                               'bids': [
-                                                   {
-                                                       'id': i['id'],
-                                                       'participationUrl': 'https://auction.auction.url/for_bid/{}'.format(i['id'])
-                                                   }
-                                                   for i in auction_bids_data
-                                               ]
-                                           }
-        })
-        # view bid participationUrl
+
+        # check bid participationUrl
         self.app.authorization = ('Basic', ('broker', ''))
         response = self.app.get('/auctions/{}/bids/{}?acc_token={}'.format(auction_id, bid_id, bid_token))
-        self.assertEqual(response.json['data']['participationUrl'], 'https://auction.auction.url/for_bid/{}'.format(bid_id))
+        self.assertIn('participationUrl', response.json['data'])
 
         # posting auction results
         self.app.authorization = ('Basic', ('auction', ''))
