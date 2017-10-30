@@ -11,6 +11,5 @@ STAGE_TIMEDELTA = DUTCH_TIMEDELTA / NUMBER_OF_STAGES
 SEALEDBID_TIMEDELTA = timedelta(minutes=10) # from openprocurement.auction.insider.constants import SEALEDBID_TIMEDELTA
 BESTBID_TIMEDELTA = timedelta(minutes=5) # from openprocurement.auction.insider.constants import BESTBID_TIMEDELTA
 FIRST_PAUSE = timedelta(seconds=30)
-LAST_PAUSE_SECONDS = timedelta(seconds=5)
 END_PHASE_PAUSE = timedelta(seconds=20)
-SERVICE_TIMEDELTA = FIRST_PAUSE + LAST_PAUSE_SECONDS + END_PHASE_PAUSE
+SERVICE_TIMEDELTA = FIRST_PAUSE + END_PHASE_PAUSE
