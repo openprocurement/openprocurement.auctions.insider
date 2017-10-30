@@ -5,8 +5,8 @@ from openprocurement.api.models import get_now, TZ
 from openprocurement.api.utils import context_unpack
 from openprocurement.auctions.dgf.utils import check_award_status
 
-from openprocurement.auction.flash.models import AUCTION_STAND_STILL_TIME
-from openprocurement.auction.insider.constants import (
+from openprocurement.auctions.flash.models import AUCTION_STAND_STILL_TIME
+from openprocurement.auctions.insider.constants import (
     STAGE_TIMEDELTA,
     SERVICE_TIMEDELTA,
     BESTBID_TIMEDELTA,
