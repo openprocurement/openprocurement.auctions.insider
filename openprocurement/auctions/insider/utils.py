@@ -4,6 +4,15 @@ from pkg_resources import get_distribution
 from openprocurement.api.models import get_now, TZ
 from openprocurement.api.utils import context_unpack
 from openprocurement.auctions.dgf.utils import check_award_status
+
+from openprocurement.auction.flash.models import AUCTION_STAND_STILL_TIME
+from openprocurement.auction.insider.constants import (
+    STAGE_TIMEDELTA,
+    SERVICE_TIMEDELTA,
+    BESTBID_TIMEDELTA,
+    SEALEDBID_TIMEDELTA,
+    SERVICE_TIMEDELTA
+)
 from barbecue import chef
 
 from urllib import quote
@@ -103,3 +112,7 @@ def merge_auction_results(auction, request):
                 bid.update(auction_bid)
                 break
     request.validated['data']['bids'] = auction['bids']
+
+
+def calc_auction_end_time(stages, start):
+    return start + stages * STAGE_TIMEDELTA + SERVICE_TIMEDELTA + SEALEDBID_TIMEDELTA + BESTBID_TIMEDELTA +_AUCTION_STAND_STILL_TIME

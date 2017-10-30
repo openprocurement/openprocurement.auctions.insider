@@ -13,7 +13,7 @@ from openprocurement.api.models import (
 from openprocurement.api.utils import calculate_business_date
 from openprocurement.api.models import get_now, Value, Period, TZ, SANDBOX_MODE
 from openprocurement.auctions.core.models import IAuction
-from openprocurement.auctions.flash.models import calc_auction_end_time, COMPLAINT_STAND_STILL_TIME
+from openprocurement.auctions.flash.models import COMPLAINT_STAND_STILL_TIME
 from openprocurement.auctions.dgf.models import (
     DGFFinancialAssets as BaseAuction,
     get_auction, Bid as BaseBid,
@@ -23,8 +23,9 @@ from openprocurement.auctions.dgf.models import (
     rounding_shouldStartAfter,
 )
 
-from openprocurement.auctions.insider.utils import generate_auction_url
-from openprocurement.auctions.insider.constants import DUTCH_PERIOD, QUICK_DUTCH_PERIOD
+from openprocurement.auctions.insider.utils import generate_auction_url, calc_auction_end_time
+from openprocurement.auctions.insider.constants import DUTCH_PERIOD, QUICK_DUTCH_PERIOD, NUMBER_OF_STAGES
+
 
 
 class AuctionAuctionPeriod(BaseAuctionPeriod):
@@ -35,8 +36,8 @@ class AuctionAuctionPeriod(BaseAuctionPeriod):
         if self.endDate:
             return
         auction = self.__parent__
-        if self.startDate and get_now() > calc_auction_end_time(auction.numberOfBids, self.startDate):
-            start_after = calc_auction_end_time(auction.numberOfBids, self.startDate)
+        if self.startDate and get_now() > calc_auction_end_time(NUMBER_OF_STAGES, self.startDate):
+            start_after = calc_auction_end_time(NUMBER_OF_STAGES, self.startDate)
         elif auction.enquiryPeriod and auction.enquiryPeriod.endDate:
             start_after = auction.enquiryPeriod.endDate
         else:
@@ -128,8 +129,8 @@ class Auction(BaseAuction):
         elif not self.lots and self.status == 'active.auction' and self.auctionPeriod and self.auctionPeriod.startDate and not self.auctionPeriod.endDate:
             if now < self.auctionPeriod.startDate:
                 checks.append(self.auctionPeriod.startDate.astimezone(TZ))
-            elif now < calc_auction_end_time(self.numberOfBids, self.auctionPeriod.startDate).astimezone(TZ):
-                checks.append(calc_auction_end_time(self.numberOfBids, self.auctionPeriod.startDate).astimezone(TZ))
+            elif now < calc_auction_end_time(NUMBER_OF_STAGES, self.auctionPeriod.startDate).astimezone(TZ):
+                checks.append(calc_auction_end_time(NUMBER_OF_STAGES, self.auctionPeriod.startDate).astimezone(TZ))
         elif not self.lots and self.status == 'active.qualification':
             for award in self.awards:
                 if award.status == 'pending.verification':
