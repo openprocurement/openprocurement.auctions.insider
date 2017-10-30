@@ -115,4 +115,4 @@ def merge_auction_results(auction, request):
 
 
 def calc_auction_end_time(stages, start):
-    return start + stages * STAGE_TIMEDELTA + SERVICE_TIMEDELTA + SEALEDBID_TIMEDELTA + BESTBID_TIMEDELTA +_AUCTION_STAND_STILL_TIME
+    return start + stages * STAGE_TIMEDELTA + SERVICE_TIMEDELTA + SEALEDBID_TIMEDELTA + BESTBID_TIMEDELTA + AUCTION_STAND_STILL_TIME
