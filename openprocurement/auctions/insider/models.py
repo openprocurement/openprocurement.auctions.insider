@@ -7,13 +7,23 @@ from schematics.transforms import whitelist
 from schematics.types.serializable import serializable
 from zope.interface import implementer
 from openprocurement.api.models import (
-    Model, ListType
+    Model,
+    ListType
 )
 
 from openprocurement.api.utils import calculate_business_date
-from openprocurement.api.models import get_now, Value, Period, TZ, SANDBOX_MODE
+from openprocurement.api.models import (
+    get_now,
+    Value,
+    Period,
+    TZ,
+    SANDBOX_MODE
+)
 from openprocurement.auctions.core.models import IAuction
-from openprocurement.auctions.flash.models import calc_auction_end_time, COMPLAINT_STAND_STILL_TIME
+from openprocurement.auctions.flash.models import (
+    calc_auction_end_time,
+    COMPLAINT_STAND_STILL_TIME
+)
 from openprocurement.auctions.dgf.models import (
     DGFFinancialAssets as BaseAuction,
     get_auction, Bid as BaseBid,
@@ -24,7 +34,10 @@ from openprocurement.auctions.dgf.models import (
 )
 
 from openprocurement.auctions.insider.utils import generate_auction_url
-from openprocurement.auctions.insider.constants import DUTCH_PERIOD, QUICK_DUTCH_PERIOD
+from openprocurement.auctions.insider.constants import (
+    DUTCH_PERIOD,
+    QUICK_DUTCH_PERIOD
+)
 
 
 class AuctionAuctionPeriod(BaseAuctionPeriod):
@@ -144,8 +157,7 @@ class Auction(BaseAuction):
             ]) and not any([
                 i.status in self.block_complaint_status
                 for a in self.awards
-                for i in a.complaints
-            ]):
+                for i in a.complaints]):
             standStillEnds = [
                 a.complaintPeriod.endDate.astimezone(TZ)
                 for a in self.awards

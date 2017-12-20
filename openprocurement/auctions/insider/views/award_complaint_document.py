@@ -3,8 +3,8 @@
 from openprocurement.auctions.core.utils import (
     opresource,
 )
-from openprocurement.auctions.dgf.views.financial.award_complaint_document import (
-    FinancialAuctionAwardComplaintDocumentResource,
+from openprocurement.auctions.core.awarding_2_0.views import (
+    AuctionAwardComplaintDocumentResource,
 )
 
 
@@ -13,5 +13,5 @@ from openprocurement.auctions.dgf.views.financial.award_complaint_document impor
             path='/auctions/{auction_id}/awards/{award_id}/complaints/{complaint_id}/documents/{document_id}',
             auctionsprocurementMethodType="dgfInsider",
             description="Insider auction award complaint documents")
-class InsiderAuctionAwardComplaintDocumentResource(FinancialAuctionAwardComplaintDocumentResource):
+class InsiderAuctionAwardComplaintDocumentResource(AuctionAwardComplaintDocumentResource):
     pass
