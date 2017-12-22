@@ -3,8 +3,8 @@
 from openprocurement.auctions.core.utils import (
     opresource,
 )
-from openprocurement.auctions.dgf.views.financial.award_document import (
-    FinancialAuctionAwardDocumentResource,
+from openprocurement.auctions.core.awarding_2_0.views import (
+    AuctionAwardDocumentResource,
 )
 
 
@@ -13,5 +13,5 @@ from openprocurement.auctions.dgf.views.financial.award_document import (
             path='/auctions/{auction_id}/awards/{award_id}/documents/{document_id}',
             auctionsprocurementMethodType="dgfInsider",
             description="Insider auction award documents")
-class InsiderAuctionAwardDocumentResource(FinancialAuctionAwardDocumentResource):
+class InsiderAuctionAwardDocumentResource(AuctionAwardDocumentResource):
     pass
