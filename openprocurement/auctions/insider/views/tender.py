@@ -8,7 +8,7 @@ from openprocurement.auctions.core.utils import (
     opresource,
     save_auction,
 )
-from openprocurement.auctions.core.validation import (
+from openprocurement.auctions.dgf.validation import (
     validate_patch_auction_data,
 )
 from openprocurement.auctions.dgf.views.financial.tender import FinancialAuctionResource

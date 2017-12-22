@@ -5,6 +5,7 @@ from datetime import timedelta, time
 from uuid import uuid4
 from iso8601 import parse_date
 
+from openprocurement.auctions.core.tests.base import snitch
 from openprocurement.api.utils import ROUTE_PREFIX
 from openprocurement.api.models import get_now, SANDBOX_MODE, TZ
 from openprocurement.auctions.dgf.constants import ELIGIBILITY_CRITERIA
@@ -49,7 +50,7 @@ class InsiderAuctionTest(BaseInsiderWebTest):
             'procurementMethodType', 'procuringEntity',
             'submissionMethodDetails', 'submissionMethodDetails_en', 'submissionMethodDetails_ru',
             'title', 'title_en', 'title_ru', 'value', 'auctionPeriod',
-            'dgfDecisionDate', 'dgfDecisionID',
+            'dgfDecisionDate', 'dgfDecisionID', 'merchandisingObject'
         ])
         if SANDBOX_MODE:
             fields.add('procurementMethodDetails')
@@ -68,6 +69,14 @@ class InsiderAuctionTest(BaseInsiderWebTest):
 class InsiderAuctionResourceTest(BaseInsiderWebTest):
     initial_data = test_insider_auction_data
     initial_organization = test_organization
+
+    from openprocurement.auctions.core.tests.blanks.tender_blanks import (
+        create_auction_draft_with_registry,
+        convoy_change_status
+    )
+
+    test_01_create_auction_draft_with_registry = snitch(create_auction_draft_with_registry)
+    test_02_convoy_change_status = snitch(convoy_change_status)
 
     def test_empty_listing(self):
         response = self.app.get('/auctions')
