@@ -13,7 +13,6 @@ from openprocurement.auctions.insider.constants import (
     SEALEDBID_TIMEDELTA,
     SERVICE_TIMEDELTA
 )
-from barbecue import chef
 
 from urllib import quote
 from base64 import b64encode
@@ -70,31 +69,6 @@ def check_status(request):
         standStillEnd = max(standStillEnds)
         if standStillEnd <= now:
             check_auction_status(request)
-
-
-def create_awards(request):
-    auction = request.validated['auction']
-    auction.status = 'active.qualification'
-    now = get_now()
-    auction.awardPeriod = type(auction).awardPeriod({'startDate': now})
-    valid_bids = [bid for bid in auction.bids if bid['status'] != 'invalid']
-    bids = chef(valid_bids, auction.features or [], [], True)
-
-    for bid, status in zip(bids, ['pending.verification', 'pending.waiting']):
-        bid = bid.serialize()
-        award = type(auction).awards.model_class({
-            '__parent__': request.context,
-            'bid_id': bid['id'],
-            'status': status,
-            'date': now,
-            'value': bid['value'],
-            'suppliers': bid['tenderers'],
-            'complaintPeriod': {'startDate': now}
-        })
-        if award.status == 'pending.verification':
-            award.signingPeriod = award.paymentPeriod = award.verificationPeriod = {'startDate': now}
-            request.response.headers['Location'] = request.route_url('{}:Auction Awards'.format(auction.procurementMethodType), auction_id=auction.id, award_id=award['id'])
-        auction.awards.append(award)
 
 
 def invalidate_empty_bids(auction):
