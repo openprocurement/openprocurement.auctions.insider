@@ -16,6 +16,6 @@ SERVICE_TIMEDELTA = FIRST_PAUSE + END_PHASE_PAUSE
 
 VIEW_LOCATIONS = [
     "openprocurement.auctions.insider.views",
-    "openprocurement.auctions.core.plugins.contracting.dgf.views",
+    "openprocurement.auctions.core.plugins",
 ]
 
