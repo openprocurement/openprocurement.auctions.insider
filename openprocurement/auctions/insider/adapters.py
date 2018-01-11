@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from openprocurement.auctions.core.adapters import AuctionConfigurator
 from openprocurement.auctions.insider.models import DGFInsider
-from openprocurement.auctions.core.plugins.awarding_2_0.utils import create_awards_insider
-from openprocurement.auctions.core.plugins.awarding_2_0.models import Award
+from openprocurement.auctions.core.plugins.awarding.v2.utils import create_awards_insider
+from openprocurement.auctions.core.plugins.awarding.v2.models import Award
 
 
 class AuctionInsiderConfigurator(AuctionConfigurator):
