@@ -7,15 +7,18 @@ from openprocurement.auctions.core.utils import (
     save_auction,
     apply_patch,
     opresource,
-    remove_draft_bids
-)
-from openprocurement.auctions.insider.validation import (
-    validate_auction_auction_data,
+    remove_draft_bids,
 )
 from openprocurement.auctions.dgf.views.financial.auction import (
     FinancialAuctionAuctionResource,
 )
-from openprocurement.auctions.insider.utils import create_awards, invalidate_empty_bids, merge_auction_results
+from openprocurement.auctions.insider.utils import (
+    create_awards,
+    invalidate_empty_bids,
+    merge_auction_results,
+)
+from openprocurement.auctions.insider.validation import validate_auction_auction_data
+from openprocurement.auctions.insider.constants import TENDER_PERIOD_STATUSES
 
 
 @opresource(name='dgfInsider:Auction Auction',
@@ -27,7 +30,7 @@ class InsiderAuctionAuctionResource(FinancialAuctionAuctionResource):
 
     @json_view(permission='auction')
     def collection_get(self):
-        if self.request.validated['auction_status'] not in ['active.tendering', 'active.auction']:
+        if self.request.validated['auction_status'] not in TENDER_PERIOD_STATUSES:
             self.request.errors.add('body', 'data', 'Can\'t get auction info in current ({}) auction status'.format(
                 self.request.validated['auction_status']))
             self.request.errors.status = 403

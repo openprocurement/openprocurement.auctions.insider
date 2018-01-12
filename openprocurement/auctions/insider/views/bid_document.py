@@ -18,7 +18,7 @@ class InsiderAuctionBidDocumentResource(FinancialAuctionBidDocumentResource):
 
     def validate_bid_document(self, operation):
         auction = self.request.validated['auction']
-        if auction.status not in ['active.tendering', 'active.auction', 'active.qualification']:
+        if self.request.validated['auction_status'] not in TENDER_PERIOD_STATUSES and self.request.validated['auction_status'] != 'active.qualification':
             self.request.errors.add('body', 'data', 'Can\'t {} document in current ({}) auction status'.format(operation, auction.status))
             self.request.errors.status = 403
             return
