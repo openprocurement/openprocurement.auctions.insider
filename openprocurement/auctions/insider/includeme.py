@@ -1,7 +1,6 @@
 from pyramid.interfaces import IRequest
 from openprocurement.api.interfaces import IContentConfigurator
-from openprocurement.auctions.core.models import IAuction
-from openprocurement.auctions.insider.models import DGFInsider
+from openprocurement.auctions.insider.models import DGFInsider, IInsiderAuction
 from openprocurement.auctions.insider.adapters import AuctionInsiderConfigurator
 from openprocurement.auctions.insider.constants import VIEW_LOCATIONS
 
@@ -14,7 +13,7 @@ def includeme(config):
 
     config.registry.registerAdapter(
         AuctionInsiderConfigurator,
-        (IAuction, IRequest),
+        (IInsiderAuction, IRequest),
         IContentConfigurator
     )
 

@@ -89,7 +89,11 @@ class Bid(BaseBid):
             return url
 
 
-@implementer(IAuction)
+class IInsiderAuction(IAuction):
+    """Marker interface for Insider auctions"""
+
+
+@implementer(IInsiderAuction)
 class Auction(BaseAuction):
     """Data regarding auction process - publicly inviting prospective contractors to submit bids for evaluation and selecting a winner or winners."""
     procurementMethodType = StringType(default="dgfInsider")
