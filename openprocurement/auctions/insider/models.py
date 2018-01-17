@@ -3,7 +3,7 @@ from datetime import timedelta
 from schematics.types import StringType
 from schematics.types.compound import ModelType
 from schematics.exceptions import ValidationError
-from schematics.transforms import blacklist, whitelist
+from schematics.transforms import whitelist
 from schematics.types.serializable import serializable
 from zope.interface import implementer
 from openprocurement.api.models import (
@@ -11,7 +11,7 @@ from openprocurement.api.models import (
 )
 
 from openprocurement.api.utils import calculate_business_date
-from openprocurement.api.models import get_now, Value, Period, TZ, SANDBOX_MODE, schematics_embedded_role
+from openprocurement.api.models import get_now, Value, Period, TZ, SANDBOX_MODE
 from openprocurement.auctions.core.models import IAuction
 from openprocurement.auctions.flash.models import COMPLAINT_STAND_STILL_TIME, auction_role
 from openprocurement.auctions.dgf.models import (
