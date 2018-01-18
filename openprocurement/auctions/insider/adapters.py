@@ -12,3 +12,4 @@ class AuctionInsiderConfigurator(AuctionConfigurator):
 
     def add_award(self):
         return create_awards_insider(self.request)
+
