@@ -6,26 +6,22 @@ from datetime import timedelta
 from openprocurement.api.models import get_now
 
 from openprocurement.auctions.core.tests.award import (
-    AuctionAwardProcessTestMixin,
     AuctionAwardDocumentResourceTestMixin
 )
-from openprocurement.auctions.core.tests.base import snitch
+from openprocurement.auctions.core.plugins.awarding.v3.tests.award import (
+    AuctionAwardProcessTestMixin,
+    CreateAuctionAwardTestMixin
+)
+
 from openprocurement.auctions.insider.tests.base import (
     BaseInsiderAuctionWebTest,
     test_financial_bids,
 )
-from openprocurement.auctions.core.tests.blanks.award_blanks import (
-    create_auction_award_invalid,
-    create_auction_award
-)
 
 
-class InsiderAuctionCreateAwardTest(BaseInsiderAuctionWebTest):
+class InsiderAuctionCreateAwardTest(BaseInsiderAuctionWebTest, CreateAuctionAwardTestMixin):
     initial_status = 'active.qualification'
     initial_bids = test_financial_bids
-
-    test_create_auction_award_invalid = snitch(create_auction_award_invalid)
-    test_create_auction_award = snitch(create_auction_award)
 
 
 class InsiderAuctionAwardProcessTest(BaseInsiderAuctionWebTest, AuctionAwardProcessTestMixin):
