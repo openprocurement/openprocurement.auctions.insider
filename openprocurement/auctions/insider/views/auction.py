@@ -43,7 +43,7 @@ class InsiderAuctionAuctionResource(FinancialAuctionAuctionResource):
         auction = self.request.validated['auction']
         invalidate_empty_bids(auction)
         if any([i.status == 'active' for i in auction.bids]):
-            self.request.content_configurator.add_award()
+            self.request.content_configurator.start_awarding()
         else:
             auction.status = 'unsuccessful'
         if save_auction(self.request):
