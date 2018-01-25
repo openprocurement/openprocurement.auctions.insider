@@ -13,18 +13,21 @@ from openprocurement.auctions.core.tests.blanks.chronograph_blanks import (
     # InsiderAuctionDontSwitchSuspendedAuction2ResourceTest
     switch_suspended_auction_to_auction,
 )
-from openprocurement.auctions.core.tests.chronograph import (
+from openprocurement.auctions.core.plugins.awarding.v3.tests.chronograph import (
     AuctionAwardSwitchResourceTestMixin,
     AuctionDontSwitchSuspendedAuctionResourceTestMixin
 )
+from openprocurement.auctions.core.plugins.awarding.v3.tests.blanks.chronograph_blanks import (
+    # AuctionAwardSwitch2ResourceTest
+    switch_verification_to_unsuccessful_2,
+    switch_active_to_unsuccessful_2,
+)
+
+
 from openprocurement.auctions.insider.tests.blanks.chronograph_blanks import (
     # InsiderAuctionAuctionPeriodResourceTest
     set_auction_period,
-    reset_auction_period,
-    # InsiderAuctionAwardSwitch2ResourceTest
-    switch_verification_to_unsuccessful2,
-    switch_payment_to_unsuccessful2,
-    switch_active_to_unsuccessful2,
+    reset_auction_period
 )
 
 
@@ -119,9 +122,8 @@ class InsiderAuctionAwardSwitch2ResourceTest(BaseInsiderAuctionWebTest):
         # self.second_award_id = self.second_award['id']
         self.app.authorization = authorization
 
-    test_switch_verification_to_unsuccessful = snitch(switch_verification_to_unsuccessful2)
-    test_switch_payment_to_unsuccessful = snitch(switch_payment_to_unsuccessful2)
-    test_switch_active_to_unsuccessful = snitch(switch_active_to_unsuccessful2)
+    test_switch_verification_to_unsuccessful = snitch(switch_verification_to_unsuccessful_2)
+    test_switch_active_to_unsuccessful = snitch(switch_active_to_unsuccessful_2)
 
 
 class InsiderAuctionDontSwitchSuspendedAuction2ResourceTest(BaseInsiderAuctionWebTest):
