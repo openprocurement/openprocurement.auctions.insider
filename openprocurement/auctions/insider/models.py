@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
-from schematics.types import StringType
+from schematics.types import StringType, IntType
 from schematics.types.compound import ModelType
 from schematics.exceptions import ValidationError
-from schematics.transforms import whitelist
+from schematics.transforms import blacklist, whitelist
 from schematics.types.serializable import serializable
 from zope.interface import implementer
 from openprocurement.api.models import (
@@ -13,7 +13,7 @@ from openprocurement.api.models import (
 from openprocurement.api.utils import calculate_business_date
 from openprocurement.api.models import get_now, Value, Period, TZ, SANDBOX_MODE
 from openprocurement.auctions.core.models import IAuction
-from openprocurement.auctions.flash.models import COMPLAINT_STAND_STILL_TIME, auction_role
+from openprocurement.auctions.flash.models import COMPLAINT_STAND_STILL_TIME, auction_role, auction_view_role
 from openprocurement.auctions.dgf.models import (
     DGFFinancialAssets as BaseAuction,
     get_auction, Bid as BaseBid,
@@ -21,6 +21,8 @@ from openprocurement.auctions.dgf.models import (
     AuctionAuctionPeriod as BaseAuctionPeriod,
     DGF_PLATFORM_LEGAL_DETAILS,
     rounding_shouldStartAfter,
+    edit_role,
+    Administrator_role
 )
 
 from openprocurement.auctions.insider.utils import generate_auction_url, calc_auction_end_time
@@ -79,6 +81,17 @@ class Bid(BaseBid):
             return url
 
 
+class AuctionParameters(Model):
+    """Configurable auction parameters"""
+    type = StringType(choices=['insider'], default='insider')
+    dutchSteps = IntType(min_value=80, max_value=99, default=80)
+
+
+edit_role = (edit_role + blacklist('auctionParameters'))
+auction_view_role = (auction_view_role + whitelist('auctionParameters'))
+Administrator_role = (Administrator_role + whitelist('auctionParameters'))
+
+
 @implementer(IAuction)
 class Auction(BaseAuction):
     """Data regarding auction process - publicly inviting prospective contractors to submit bids for evaluation and selecting a winner or winners."""
@@ -89,11 +102,15 @@ class Auction(BaseAuction):
             'active.auction.dutch': auction_role,
             'active.auction.sealedbid': auction_role,
             'active.auction.bestbid': auction_role,
+            'auction_view': auction_view_role,
+            'edit_active.tendering': edit_role,
+            'Administrator': Administrator_role,
         }
 
     procurementMethodType = StringType(default="dgfInsider")
     bids = ListType(ModelType(Bid), default=list())  # A list of all the companies who entered submissions for the auction.
     auctionPeriod = ModelType(AuctionAuctionPeriod, required=True, default={})
+    auctionParameters = ModelType(AuctionParameters)
     minimalStep = ModelType(Value)
     status = StringType(choices=['draft', 'pending.verification', 'invalid', 'active.tendering', 'active.auction',
                                  'active.auction.dutch', 'active.auction.sealedbid', 'active.auction.bestbid',
