@@ -173,14 +173,14 @@ class InsiderAuctionDontSwitchSuspendedAuctionResourceTest(BaseInsiderAuctionWeb
 
 
 def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(InsiderAuctionSwitchAuctionResourceTest))
-    suite.addTest(unittest.makeSuite(InsiderAuctionAuctionPeriodResourceTest))
-    suite.addTest(unittest.makeSuite(InsiderAuctionAwardSwitchResourceTest))
-    suite.addTest(unittest.makeSuite(InsiderAuctionAwardSwitch2ResourceTest))
-    suite.addTest(unittest.makeSuite(InsiderAuctionDontSwitchSuspendedAuction2ResourceTest))
-    suite.addTest(unittest.makeSuite(InsiderAuctionDontSwitchSuspendedAuctionResourceTest))
-    return suite
+    tests = unittest.TestSuite()
+    tests.addTest(unittest.makeSuite(InsiderAuctionSwitchAuctionResourceTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionAuctionPeriodResourceTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionAwardSwitchResourceTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionAwardSwitch2ResourceTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionDontSwitchSuspendedAuction2ResourceTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionDontSwitchSuspendedAuctionResourceTest))
+    return tests
 
 
 if __name__ == '__main__':

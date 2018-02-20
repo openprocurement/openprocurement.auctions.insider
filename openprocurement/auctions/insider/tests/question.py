@@ -11,9 +11,9 @@ class InsiderAuctionQuestionResourceTest(BaseInsiderAuctionWebTest, AuctionQuest
 
 
 def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(InsiderAuctionQuestionResourceTest))
-    return suite
+    tests = unittest.TestSuite()
+    tests.addTest(unittest.makeSuite(InsiderAuctionQuestionResourceTest))
+    return tests
 
 
 if __name__ == '__main__':

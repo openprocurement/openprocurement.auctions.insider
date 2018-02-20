@@ -30,10 +30,10 @@ class InsiderAuctionCancellationDocumentResourceTest(BaseInsiderAuctionWebTest,
 
 
 def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(InsiderAuctionCancellationResourceTest))
-    suite.addTest(unittest.makeSuite(InsiderAuctionCancellationDocumentResourceTest))
-    return suite
+    tests = unittest.TestSuite()
+    tests.addTest(unittest.makeSuite(InsiderAuctionCancellationResourceTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionCancellationDocumentResourceTest))
+    return tests
 
 
 if __name__ == '__main__':

@@ -140,10 +140,10 @@ class InsiderAuctionContractDocumentResourceTest(BaseInsiderAuctionWebTest, Auct
 
 
 def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(InsiderAuctionContractResourceTest))
-    suite.addTest(unittest.makeSuite(InsiderAuctionContractDocumentResourceTest))
-    return suite
+    tests = unittest.TestSuite()
+    tests.addTest(unittest.makeSuite(InsiderAuctionContractResourceTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionContractDocumentResourceTest))
+    return tests
 
 
 if __name__ == '__main__':

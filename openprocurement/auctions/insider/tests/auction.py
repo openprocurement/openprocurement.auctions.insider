@@ -106,11 +106,13 @@ class InsiderAuctionNoBidsResourceTest(BaseInsiderAuctionWebTest):
 
 
 def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(InsiderAuctionAuctionResourceTest))
-    suite.addTest(unittest.makeSuite(InsiderAuctionBidInvalidationAuctionResourceTest))
-    suite.addTest(unittest.makeSuite(InsiderAuctionSameValueAuctionResourceTest))
-    return suite
+    tests = unittest.TestSuite()
+    tests.addTest(unittest.makeSuite(InsiderAuctionAuctionResourceTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionBidInvalidationAuctionResourceTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionDraftBidAuctionResourceTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionSameValueAuctionResourceTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionNoBidsResourceTest))
+    return tests
 
 
 if __name__ == '__main__':

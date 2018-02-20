@@ -67,19 +67,19 @@ class InsiderAuctionProcessTest(BaseInsiderAuctionWebTest):
     def setUp(self):
         super(InsiderAuctionProcessTest.__bases__[0], self).setUp()
 
-    test_one_valid_bid_auction = unittest.skip(snitch(one_valid_bid_auction))
-    test_one_invalid_bid_auction = unittest.skip(snitch(one_invalid_bid_auction))
+    test_one_valid_bid_auction = unittest.skip('option not available')(snitch(one_valid_bid_auction))
+    test_one_invalid_bid_auction = unittest.skip('option not available')(snitch(one_invalid_bid_auction))
     test_first_bid_auction = snitch(first_bid_auction)
     test_auctionUrl_in_active_auction = snitch(auctionUrl_in_active_auction)
     test_suspended_auction = snitch(suspended_auction)
 
 
 def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(InsiderAuctionProcessTest))
-    suite.addTest(unittest.makeSuite(InsiderAuctionResourceTest))
-    suite.addTest(unittest.makeSuite(InsiderAuctionTest))
-    return suite
+    tests = unittest.TestSuite()
+    tests.addTest(unittest.makeSuite(InsiderAuctionTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionResourceTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionProcessTest))
+    return tests
 
 
 if __name__ == '__main__':

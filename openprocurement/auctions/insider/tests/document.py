@@ -28,10 +28,10 @@ class InsiderAuctionDocumentWithDSResourceTest(InsiderAuctionDocumentResourceTes
 
 
 def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(InsiderAuctionDocumentResourceTest))
-    suite.addTest(unittest.makeSuite(InsiderAuctionDocumentWithDSResourceTest))
-    return suite
+    tests = unittest.TestSuite()
+    tests.addTest(unittest.makeSuite(InsiderAuctionDocumentResourceTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionDocumentWithDSResourceTest))
+    return tests
 
 
 if __name__ == '__main__':

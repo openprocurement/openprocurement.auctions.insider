@@ -162,11 +162,11 @@ class InsiderAuctionAwardDocumentResourceTest(BaseInsiderAuctionWebTest,
 
 
 def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(InsiderAuctionCreateAwardTest))
-    suite.addTest(unittest.makeSuite(InsiderAuctionAwardProcessTest))
-    suite.addTest(unittest.makeSuite(InsiderAuctionAwardDocumentResourceTest))
-    return suite
+    tests = unittest.TestSuite()
+    tests.addTest(unittest.makeSuite(InsiderAuctionCreateAwardTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionAwardProcessTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionAwardDocumentResourceTest))
+    return tests
 
 
 if __name__ == '__main__':

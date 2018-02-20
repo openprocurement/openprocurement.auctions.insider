@@ -6,6 +6,9 @@ version = '0.1.8'
 entry_points = {
     'openprocurement.auctions.core.plugins': [
         'auctions.insider = openprocurement.auctions.insider.includeme:includeme'
+    ],
+    'openprocurement.tests': [
+        'auctions.insider = openprocurement.auctions.insider.tests.main:suite'
     ]
 }
 
