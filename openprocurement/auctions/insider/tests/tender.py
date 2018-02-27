@@ -377,7 +377,7 @@ class InsiderAuctionResourceTest(BaseInsiderWebTest):
         self.assertEqual(response.content_type, 'application/json')
         self.assertEqual(response.json['status'], 'error')
         self.assertEqual(response.json['errors'], [
-            {u'description': u'No JSON object could be decoded',
+            {u'description': u'Expecting value: line 1 column 1 (char 0)',
                 u'location': u'body', u'name': u'data'}
         ])
 
@@ -610,7 +610,7 @@ class InsiderAuctionResourceTest(BaseInsiderWebTest):
             u'tenderPeriod', u'minimalStep', u'items', u'value', u'procuringEntity', u'next_check', u'dgfID',
             u'procurementMethod', u'awardCriteria', u'submissionMethod', u'title', u'owner', u'auctionPeriod',
             u'eligibilityCriteria', u'eligibilityCriteria_en', u'eligibilityCriteria_ru', 'documents',
-            u'dgfDecisionDate', u'dgfDecisionID', u'tenderAttempts'
+            u'dgfDecisionDate', u'dgfDecisionID', u'tenderAttempts',
         ]))
         self.assertNotEqual(data['id'], auction['id'])
         self.assertNotEqual(data['doc_id'], auction['id'])

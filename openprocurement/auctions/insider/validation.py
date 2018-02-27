@@ -8,7 +8,7 @@ from openprocurement.auctions.core.validation import (
 def validate_auction_auction_data(request):
     data = validate_patch_auction_data(request)
     auction = request.validated['auction']
-    if auction.status != 'active.auction':
+    if auction.status not in ['active.auction', 'active.auction.dutch', 'active.auction.sealedbid', 'active.auction.bestbid']:
         request.errors.add('body', 'data', 'Can\'t {} in current ({}) auction status'.format('report auction results' if request.method == 'POST' else 'update auction urls', auction.status))
         request.errors.status = 403
         return

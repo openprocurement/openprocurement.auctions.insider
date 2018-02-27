@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from openprocurement.auctions.core.utils import (
     opresource,
 )

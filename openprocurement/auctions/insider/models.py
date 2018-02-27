@@ -13,7 +13,7 @@ from openprocurement.api.models import (
 from openprocurement.api.utils import calculate_business_date
 from openprocurement.api.models import get_now, Value, Period, TZ, SANDBOX_MODE
 from openprocurement.auctions.core.models import IAuction
-from openprocurement.auctions.flash.models import COMPLAINT_STAND_STILL_TIME, auction_view_role
+from openprocurement.auctions.flash.models import COMPLAINT_STAND_STILL_TIME, auction_role, auction_view_role
 from openprocurement.auctions.dgf.models import (
     DGFFinancialAssets as BaseAuction,
     get_auction, Bid as BaseBid,
@@ -98,6 +98,10 @@ class Auction(BaseAuction):
 
     class Options:
         roles = {
+            'auction_patch': whitelist('auctionUrl', 'bids', 'lots', 'status'),
+            'active.auction.dutch': auction_role,
+            'active.auction.sealedbid': auction_role,
+            'active.auction.bestbid': auction_role,
             'auction_view': auction_view_role,
             'edit_active.tendering': edit_role,
             'Administrator': Administrator_role,
@@ -108,6 +112,10 @@ class Auction(BaseAuction):
     auctionPeriod = ModelType(AuctionAuctionPeriod, required=True, default={})
     auctionParameters = ModelType(AuctionParameters)
     minimalStep = ModelType(Value)
+    status = StringType(choices=['draft', 'pending.verification', 'invalid', 'active.tendering', 'active.auction',
+                                 'active.auction.dutch', 'active.auction.sealedbid', 'active.auction.bestbid',
+                                 'active.qualification', 'active.awarded', 'complete', 'cancelled', 'unsuccessful'],
+                        default='active.tendering')
 
     def initialize(self):
         if not self.enquiryPeriod:
