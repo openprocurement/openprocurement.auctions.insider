@@ -18,7 +18,7 @@ from openprocurement.auctions.insider.utils import (
     merge_auction_results,
 )
 from openprocurement.auctions.insider.validation import validate_auction_auction_data
-from openprocurement.auctions.insider.constants import TENDER_PERIOD_STATUSES
+from openprocurement.auctions.core.constants import PROCEDURE_STATUSES
 
 
 @opresource(name='dgfInsider:Auction Auction',
@@ -30,7 +30,8 @@ class InsiderAuctionAuctionResource(FinancialAuctionAuctionResource):
 
     @json_view(permission='auction')
     def collection_get(self):
-        if self.request.validated['auction_status'] not in TENDER_PERIOD_STATUSES:
+        auction = self.request.validated['auction']
+        if self.request.validated['auction_status'] not in PROCEDURE_STATUSES[auction.procurementMethodType]['tender_period_statuses']:
             self.request.errors.add('body', 'data', 'Can\'t get auction info in current ({}) auction status'.format(
                 self.request.validated['auction_status']))
             self.request.errors.status = 403
