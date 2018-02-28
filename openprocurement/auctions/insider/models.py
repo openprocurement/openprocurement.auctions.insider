@@ -84,7 +84,7 @@ class Bid(BaseBid):
 class AuctionParameters(Model):
     """Configurable auction parameters"""
     type = StringType(choices=['insider'], default='insider')
-    dutchSteps = IntType(min_value=80, max_value=99, default=80)
+    dutchSteps = IntType(choices=[10, 20, 30, 40, 50, 60, 70, 80, 90, 99, 100], default=80)
 
 
 edit_role = (edit_role + blacklist('auctionParameters'))
@@ -126,6 +126,8 @@ class Auction(BaseAuction):
         self.auctionPeriod.endDate = None
         self.date = now
         self.documents.append(type(self).documents.model_class(DGF_PLATFORM_LEGAL_DETAILS))
+        if not self.auctionParameters:
+            self.auctionParameters = type(self).auctionParameters.model_class()
 
     @serializable(serialized_name="minimalStep", type=ModelType(Value))
     def auction_minimalStep(self):
