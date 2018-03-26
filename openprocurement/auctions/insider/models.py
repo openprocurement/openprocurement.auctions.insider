@@ -182,10 +182,8 @@ class Auction(BaseAuction):
                 checks.append(calc_auction_end_time(NUMBER_OF_STAGES, self.auctionPeriod.startDate).astimezone(TZ))
         elif not self.lots and self.status == 'active.qualification':
             for award in self.awards:
-                if award.status == 'pending.verification':
+                if award.status == 'pending':
                     checks.append(award.verificationPeriod.endDate.astimezone(TZ))
-                elif award.status == 'pending.payment':
-                    checks.append(award.paymentPeriod.endDate.astimezone(TZ))
         elif not self.lots and self.status == 'active.awarded' and not any([
                 i.status in self.block_complaint_status
                 for i in self.complaints
