@@ -353,7 +353,26 @@ def create_auction(self):
     self.assertEqual(data['guarantee']['amount'], 100500)
     self.assertEqual(data['guarantee']['currency'], "USD")
 
-# InsiderAuctionProcessTest
+
+def check_daylight_savings_timezone(self):
+    data = deepcopy(self.initial_data)
+    ua_tz = pytz.timezone('Europe/Kiev')
+    response = self.app.post_json('/auctions', {'data': data})
+    timezone_before = parse_date(response.json['data']['tenderPeriod']['endDate']).astimezone(tz=ua_tz)
+    timezone_before = timezone_before.strftime('%Z')
+    now = get_now()
+    list_of_timezone_bools = []
+    # check if DST working with different time periods
+    for i in (10, 90, 180, 210, 240):
+        data.update({
+            "auctionPeriod": {
+                "startDate": (now + timedelta(days=i)).isoformat(),
+            }})
+        response = self.app.post_json('/auctions', {'data': data})
+        timezone_after = parse_date(response.json['data']['tenderPeriod']['endDate']).astimezone(tz=ua_tz)
+        timezone_after = timezone_after.strftime('%Z')
+        list_of_timezone_bools.append(timezone_before != timezone_after)
+    self.assertTrue(any(list_of_timezone_bools))
 
 
 def first_bid_auction(self):
