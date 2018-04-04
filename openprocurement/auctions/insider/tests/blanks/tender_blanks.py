@@ -17,7 +17,7 @@ def create_role(self):
         'procurementMethodType', 'procuringEntity',
         'submissionMethodDetails', 'submissionMethodDetails_en', 'submissionMethodDetails_ru',
         'title', 'title_en', 'title_ru', 'value', 'auctionPeriod',
-        'dgfDecisionDate', 'dgfDecisionID',
+        'dgfDecisionDate', 'dgfDecisionID', 'auctionParameters'
     ])
     if SANDBOX_MODE:
         fields.add('procurementMethodDetails')
@@ -288,7 +288,7 @@ def create_auction_generated(self):
         u'tenderPeriod', u'minimalStep', u'items', u'value', u'procuringEntity', u'next_check', u'dgfID',
         u'procurementMethod', u'awardCriteria', u'submissionMethod', u'title', u'owner', u'auctionPeriod',
         u'eligibilityCriteria', u'eligibilityCriteria_en', u'eligibilityCriteria_ru', 'documents',
-        u'dgfDecisionDate', u'dgfDecisionID', u'tenderAttempts',
+        u'dgfDecisionDate', u'dgfDecisionID', u'tenderAttempts', u'auctionParameters'
     ]))
     self.assertNotEqual(data['id'], auction['id'])
     self.assertNotEqual(data['doc_id'], auction['id'])
@@ -312,7 +312,7 @@ def create_auction(self):
         self.assertEqual(set(auction) - set(self.initial_data), set([
             u'id', u'dateModified', u'auctionID', u'date', u'status', u'procurementMethod', 'documents',
             u'awardCriteria', u'submissionMethod', u'next_check', u'owner', u'enquiryPeriod', u'tenderPeriod',
-            u'eligibilityCriteria_en', u'eligibilityCriteria', u'eligibilityCriteria_ru', u'minimalStep'
+            u'eligibilityCriteria_en', u'eligibilityCriteria', u'eligibilityCriteria_ru', u'minimalStep', u'auctionParameters'
         ]))
     else:
         self.assertEqual(set(auction) - set(self.initial_data), set([

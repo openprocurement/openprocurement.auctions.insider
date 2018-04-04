@@ -32,12 +32,10 @@ from openprocurement.auctions.dgf.models import (
     DGFFinancialAssets as BaseAuction,
     Bid as BaseBid,
     AuctionAuctionPeriod as BaseAuctionPeriod,
+    Administrator_role,
+    edit_role
 )
-from openprocurement.auctions.core.models import (
-    edit_role,
-    auction_view_role,
-    Administrator_role
-)
+from openprocurement.auctions.core.models import auction_view_role
 
 from openprocurement.auctions.insider.utils import generate_auction_url, calc_auction_end_time
 from openprocurement.auctions.insider.constants import (
