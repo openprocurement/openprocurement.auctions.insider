@@ -1,4 +1,4 @@
-GET /api/2.3/auctions/826ce0aeaf9a408487a657a5820b7c01/contracts/dd8330681e1a4f26bed059ab6048b7b6/documents HTTP/1.0
+GET /api/2.3/auctions/ca31727f31f243b089cbc005b8fda5ba/contracts/30925f126c174b389a1eed392c9f0c9e/documents HTTP/1.0
 Authorization: Basic YnJva2VyOg==
 Host: api-sandbox.ea.openprocurement.org
 
@@ -11,22 +11,24 @@ Content-Type: application/json; charset=UTF-8
     {
       "hash": "md5:00000000000000000000000000000000", 
       "format": "application/msword", 
-      "url": "http://public.docs-sandbox.ea.openprocurement.org/get/4472d48e3f93427e94dc1738b77868aa?KeyID=020ebf5f&Signature=UtnKx87CsKzf5iAdY%252BFCsg%252B79YoZAgtiOxgnhfaZzySCl4x%252B6Flf18hQpIQ9I6sAMeymKE9We6A1j1ZhNP5yCw%253D%253D", 
+      "url": "http://public.docs-sandbox.ea.openprocurement.org/get/39b2454289e240d38e00636e2e79016a?KeyID=9051732b&Signature=sGiPfaDjXW6iDJHcCpbc1eAc6aGcy9NdEnxZLrLVxcpIIbLp2TheHdUM4klGIrfd7L8rbhBG83PEk%252BrW9%252BzCCg%253D%253D", 
       "title": "contract_first_document.doc", 
       "documentOf": "tender", 
-      "datePublished": "2017-10-11T12:57:49.854856+03:00", 
-      "dateModified": "2017-10-11T12:57:49.854902+03:00", 
-      "id": "8efadc58a9db4c5ebbaa79361cc7e435"
+      "datePublished": "2018-03-13T17:49:03.945461+02:00", 
+      "documentType": "prolongationProtocol", 
+      "dateModified": "2018-03-13T17:49:03.945487+02:00", 
+      "id": "393a04982b1441138438c7273b49eac1"
     }, 
     {
       "hash": "md5:00000000000000000000000000000000", 
       "format": "application/msword", 
-      "url": "http://public.docs-sandbox.ea.openprocurement.org/get/61c0a70a021c448f8b6f414d21c9f122?KeyID=020ebf5f&Signature=4F8AOjd6wBE1c2WUQQsSpvyhWcbXdf6%252BwEfR%252BiBTow%252Bd0TdM8R9L8SdkZvQ9eEsNaPXx9CiP1zHmO9VEBjeCBw%253D%253D", 
+      "url": "http://public.docs-sandbox.ea.openprocurement.org/get/88721cf4cae843ee80ce612a2fe1b79b?KeyID=9051732b&Signature=ZA%2FjEQr6RDA%2F7FhI6UstyyAqrqKmIsxU4EyuYfLUVSu8Wj3BPm3E3ypVkeG3dVLIhZm785Un8%2Fr4ZM%252BvC8F0AQ%253D%253D", 
       "title": "contract_second_document.doc", 
       "documentOf": "tender", 
-      "datePublished": "2017-10-11T12:57:50.068021+03:00", 
-      "dateModified": "2017-10-11T12:57:50.068047+03:00", 
-      "id": "95942013577947889fd9e896b590b66a"
+      "datePublished": "2018-03-13T17:49:04.104741+02:00", 
+      "documentType": "prolongationProtocol", 
+      "dateModified": "2018-03-13T17:49:04.104761+02:00", 
+      "id": "718396f63ab84e5d805f02e0026c9ded"
     }
   ]
 }

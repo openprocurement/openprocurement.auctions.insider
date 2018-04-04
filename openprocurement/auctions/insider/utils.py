@@ -3,9 +3,8 @@ from logging import getLogger
 from pkg_resources import get_distribution
 from openprocurement.api.models import get_now, TZ
 from openprocurement.api.utils import context_unpack
-from openprocurement.auctions.dgf.utils import check_award_status
 
-from openprocurement.auctions.flash.models import AUCTION_STAND_STILL_TIME
+from openprocurement.auctions.core.models import AUCTION_STAND_STILL_TIME
 from openprocurement.auctions.insider.constants import (
     STAGE_TIMEDELTA,
     SERVICE_TIMEDELTA,
@@ -13,7 +12,6 @@ from openprocurement.auctions.insider.constants import (
     SEALEDBID_TIMEDELTA,
     SERVICE_TIMEDELTA
 )
-from barbecue import chef
 
 from urllib import quote
 from base64 import b64encode
@@ -52,7 +50,7 @@ def check_status(request):
     auction = request.validated['auction']
     now = get_now()
     for award in auction.awards:
-        check_award_status(request, award, now)
+        request.content_configurator.check_award_status(request, award, now)
     if auction.status == 'active.tendering' and auction.enquiryPeriod.endDate <= now:
         LOGGER.info('Switched auction {} to {}'.format(auction['id'], 'active.auction'),
                     extra=context_unpack(request, {'MESSAGE_ID': 'switched_auction_active.auction'}))
@@ -70,31 +68,6 @@ def check_status(request):
         standStillEnd = max(standStillEnds)
         if standStillEnd <= now:
             check_auction_status(request)
-
-
-def create_awards(request):
-    auction = request.validated['auction']
-    auction.status = 'active.qualification'
-    now = get_now()
-    auction.awardPeriod = type(auction).awardPeriod({'startDate': now})
-    valid_bids = [bid for bid in auction.bids if bid['status'] != 'invalid']
-    bids = chef(valid_bids, auction.features or [], [], True)
-
-    for bid, status in zip(bids, ['pending.verification', 'pending.waiting']):
-        bid = bid.serialize()
-        award = type(auction).awards.model_class({
-            '__parent__': request.context,
-            'bid_id': bid['id'],
-            'status': status,
-            'date': now,
-            'value': bid['value'],
-            'suppliers': bid['tenderers'],
-            'complaintPeriod': {'startDate': now}
-        })
-        if award.status == 'pending.verification':
-            award.signingPeriod = award.paymentPeriod = award.verificationPeriod = {'startDate': now}
-            request.response.headers['Location'] = request.route_url('{}:Auction Awards'.format(auction.procurementMethodType), auction_id=auction.id, award_id=award['id'])
-        auction.awards.append(award)
 
 
 def invalidate_empty_bids(auction):

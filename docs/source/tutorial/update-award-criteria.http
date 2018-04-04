@@ -1,12 +1,12 @@
-PUT /api/2.3/auctions/826ce0aeaf9a408487a657a5820b7c01/documents/fc2bca86b36f4d4694cbee956dd40914?acc_token=d31a937417d947c88d8130d9215c919b HTTP/1.0
+PUT /api/2.3/auctions/ca31727f31f243b089cbc005b8fda5ba/documents/6d59ea99d07546efb587bc43c7d04a5b?acc_token=0ce53b3a0d5d47778c36b80f90b81ad5 HTTP/1.0
 Authorization: Basic YnJva2VyOg==
-Content-Length: 336
+Content-Length: 344
 Content-Type: application/json
 Host: api-sandbox.ea.openprocurement.org
 
 {
   "data": {
-    "url": "http://public.docs-sandbox.ea.openprocurement.org/get/b044980d06a84777900d4416b35fa7a4?KeyID=020ebf5f&Signature=CwVP5CoawGDpBdeT15d2IqjBKBYH0pl02sL5eO72el4euxODVpUzLMkk4MJ6y8U5UL9dlVua6eTwtl%2FTpJN1Aw%3D%3D", 
+    "url": "http://public.docs-sandbox.ea.openprocurement.org/get/9abe5606eb7c46dbae8af95de91a6571?KeyID=9051732b&Signature=o6a2%2B3P%2B2JBYnUjGiSDvP%2B4dmdDNiJGpm3CJ3kYF%2FFDU2iLFQ5sNVUrOpudeRVQ7WBx%2B49kywd9HDafXTUmnDw%3D%3D", 
     "title": "AwardCriteria-2.pdf", 
     "hash": "md5:00000000000000000000000000000000", 
     "format": "application/pdf"
@@ -21,12 +21,12 @@ Content-Type: application/json; charset=UTF-8
   "data": {
     "hash": "md5:00000000000000000000000000000000", 
     "format": "application/pdf", 
-    "url": "http://public.docs-sandbox.ea.openprocurement.org/get/b044980d06a84777900d4416b35fa7a4?KeyID=020ebf5f&Signature=GMdOIL1tZus5aoXeCnAibhhP%2FPeFT%2F%2FqNW8Ci9K0eRebq4Wtb04VSPm1umu8Psk9zHuLBMdxo2pBXr8UeK%2FUDA%253D%253D", 
+    "url": "http://public.docs-sandbox.ea.openprocurement.org/get/9abe5606eb7c46dbae8af95de91a6571?KeyID=9051732b&Signature=ciAZjBQOOYzNZVQzLejH4Sk2kHgB%252BbIJNd2%2FnB3NZFgE0qDtUL2%2FKp0nolXWoINRa%252BzqBcOITbXJvpQ5jt95Cw%253D%253D", 
     "title": "AwardCriteria-2.pdf", 
     "documentOf": "tender", 
-    "datePublished": "2017-10-11T12:57:46.782930+03:00", 
-    "dateModified": "2017-10-11T12:57:46.865994+03:00", 
-    "id": "fc2bca86b36f4d4694cbee956dd40914"
+    "datePublished": "2018-03-13T17:49:02.007367+02:00", 
+    "dateModified": "2018-03-13T17:49:02.059143+02:00", 
+    "id": "6d59ea99d07546efb587bc43c7d04a5b"
   }
 }
 

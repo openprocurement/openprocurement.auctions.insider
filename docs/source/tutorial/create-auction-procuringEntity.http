@@ -8,7 +8,7 @@ Host: api-sandbox.ea.openprocurement.org
   "data": {
     "title": "футляри до державних нагород", 
     "auctionPeriod": {
-      "startDate": "2017-10-25"
+      "startDate": "2018-03-27"
     }, 
     "tenderAttempts": 1, 
     "procurementMethodType": "dgfInsider", 
@@ -29,7 +29,7 @@ Host: api-sandbox.ea.openprocurement.org
           "description": "Земельні ділянки"
         }, 
         "description": "Земля для військовослужбовців", 
-        "id": "79a21f0787af4a35a43c58a6f39930f0", 
+        "id": "fc8f265b54ee45978a976e20010af236", 
         "unit": {
           "code": "44617100-9", 
           "name": "item"
@@ -64,56 +64,56 @@ Host: api-sandbox.ea.openprocurement.org
 
 201 Created
 Content-Type: application/json; charset=UTF-8
-Location: http://api-sandbox.ea.openprocurement.org/api/2.3/auctions/0bf3351d630b4eb0be73ec36aaa532e1
+Location: http://api-sandbox.ea.openprocurement.org/api/2.3/auctions/bdc764b5b90541328626b89b7d67d5b2
 
 {
   "access": {
-    "token": "3d3bb166ba9b4a1f9b770315cd582f7d"
+    "token": "d60deff105554bc38d9b4f7e64839e5c"
   }, 
   "data": {
     "procurementMethod": "open", 
-    "auctionID": "UA-EA-2017-10-11-000002", 
+    "auctionID": "UA-EA-2018-03-13-000002", 
     "enquiryPeriod": {
-      "startDate": "2017-10-11T12:57:46.310770+03:00", 
-      "endDate": "2017-10-24T23:59:50+03:00"
+      "startDate": "2018-03-13T17:49:01.791689+02:00", 
+      "endDate": "2018-03-26T23:59:50+03:00"
     }, 
     "submissionMethod": "electronicAuction", 
     "dgfDecisionDate": "2016-11-17", 
-    "next_check": "2017-10-24T23:59:50+03:00", 
+    "next_check": "2018-03-26T23:59:50+03:00", 
     "awardCriteria": "highestCost", 
     "dgfDecisionID": "219560", 
     "owner": "broker", 
     "title_en": "Cases with state awards", 
-    "id": "0bf3351d630b4eb0be73ec36aaa532e1", 
+    "id": "bdc764b5b90541328626b89b7d67d5b2", 
     "eligibilityCriteria_ru": "Участником электронного аукциона, предметом продажи на которых являются права требования по кредитным договорам и договорам обеспечения, не может быть пользователь, являющийся заёмщиком (должником относительно банка) и\\или поручителем (имущественным поручителем) по таким кредитным договорам и/или договорам обеспечения.", 
     "documents": [
       {
         "title": "Місце та форма прийому заяв на участь в аукціоні та банківські реквізити для зарахування гарантійних внесків", 
         "url": "http://torgi.fg.gov.ua/prozorrosale", 
         "documentOf": "tender", 
-        "datePublished": "2017-10-11T12:57:46.311396+03:00", 
+        "datePublished": "2018-03-13T17:49:01.792037+02:00", 
         "documentType": "x_dgfPlatformLegalDetails", 
-        "dateModified": "2017-10-11T12:57:46.311441+03:00", 
-        "id": "3f4b7d18c95f41d1ab49b675b6bdcbf0"
+        "dateModified": "2018-03-13T17:49:01.792061+02:00", 
+        "id": "0f46bacba90847ac811ebe0004140acb"
       }
     ], 
     "title": "футляри до державних нагород", 
     "tenderAttempts": 1, 
     "eligibilityCriteria_en": "The user, who is the borrower (the debtor of the bank) and/or guarantor (property guarantor) for loan agreements and/or collateral agreements, cannot be the bidder of the electronic auction, where the items for sale are the claim rights on such loan agreements and collateral agreements.", 
     "procurementMethodDetails": "quick, accelerator=1440", 
-    "dateModified": "2017-10-11T12:57:46.316563+03:00", 
+    "dateModified": "2018-03-13T17:49:01.794838+02:00", 
     "status": "active.tendering", 
     "eligibilityCriteria": "Учасником електронного аукціону, предметом продажу на яких є права вимоги за кредитними договорами та договорами забезпечення, не може бути користувач, який є позичальником (боржником відносно банку) та/або поручителем (майновим поручителем) за такими кредитними договорами та/або договорами забезпечення.", 
     "tenderPeriod": {
-      "startDate": "2017-10-11T12:57:46.310770+03:00", 
-      "endDate": "2017-10-25T00:00:30.631944+03:00"
+      "startDate": "2018-03-13T17:49:01.791689+02:00", 
+      "endDate": "2018-03-27T00:00:30.631944+03:00"
     }, 
     "auctionPeriod": {
-      "shouldStartAfter": "2017-10-25T00:00:00+03:00"
+      "shouldStartAfter": "2018-03-27T00:00:00+03:00"
     }, 
     "procurementMethodType": "dgfInsider", 
     "dgfID": "219560", 
-    "date": "2017-10-11T12:57:46.310770+03:00", 
+    "date": "2018-03-13T17:49:01.791689+02:00", 
     "minimalStep": {
       "currency": "UAH", 
       "amount": 0.0, 
@@ -126,7 +126,7 @@ Location: http://api-sandbox.ea.openprocurement.org/api/2.3/auctions/0bf3351d630
           "name": "item"
         }, 
         "description": "Земля для військовослужбовців", 
-        "id": "79a21f0787af4a35a43c58a6f39930f0", 
+        "id": "fc8f265b54ee45978a976e20010af236", 
         "classification": {
           "scheme": "CAV", 
           "description": "Земельні ділянки", 

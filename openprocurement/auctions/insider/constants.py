@@ -13,3 +13,9 @@ BESTBID_TIMEDELTA = timedelta(minutes=5) # from openprocurement.auction.insider.
 FIRST_PAUSE = timedelta(seconds=30)
 END_PHASE_PAUSE = timedelta(seconds=20)
 SERVICE_TIMEDELTA = FIRST_PAUSE + END_PHASE_PAUSE
+
+VIEW_LOCATIONS = [
+    "openprocurement.auctions.insider.views",
+    "openprocurement.auctions.core.plugins",
+]
+

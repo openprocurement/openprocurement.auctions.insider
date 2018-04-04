@@ -2,7 +2,9 @@
 
 import unittest
 
-from openprocurement.auctions.insider.tests import auction, award, bidder, document, tender, question, complaint
+from openprocurement.auctions.insider.tests import (
+    auction, award, bidder, cancellation, chronograph, complaint, contract, document, migration, tender, question
+)
 
 
 def suite():
@@ -10,9 +12,12 @@ def suite():
     suite.addTest(auction.suite())
     suite.addTest(award.suite())
     suite.addTest(bidder.suite())
+    suite.addTest(cancellation.suite())
+    suite.addTest(chronograph.suite())
     suite.addTest(complaint.suite())
+    suite.addTest(contract.suite())
     suite.addTest(document.suite())
-    # suite.addTest(migration.suite())
+    suite.addTest(migration.suite())
     suite.addTest(question.suite())
     suite.addTest(tender.suite())
     return suite

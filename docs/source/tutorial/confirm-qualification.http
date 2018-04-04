@@ -1,4 +1,4 @@
-PATCH /api/2.3/auctions/826ce0aeaf9a408487a657a5820b7c01/awards/6b48914d9d81462a95aa87dff79198f1?acc_token=d31a937417d947c88d8130d9215c919b HTTP/1.0
+PATCH /api/2.3/auctions/ca31727f31f243b089cbc005b8fda5ba/awards/7d4e36e2232f45b0910f887feaf23af1?acc_token=0ce53b3a0d5d47778c36b80f90b81ad5 HTTP/1.0
 Authorization: Basic YnJva2VyOg==
 Content-Length: 30
 Content-Type: application/json
@@ -17,43 +17,39 @@ Content-Type: application/json; charset=UTF-8
 {
   "data": {
     "status": "active", 
-    "paymentPeriod": {
-      "startDate": "2017-10-11T12:57:48.582436+03:00", 
-      "endDate": "2017-10-11T12:57:49.441597+03:00"
-    }, 
     "documents": [
       {
-        "dateModified": "2017-10-11T12:57:48.992259+03:00", 
+        "dateModified": "2018-03-13T17:49:03.449222+02:00", 
         "hash": "md5:00000000000000000000000000000000", 
         "format": "application/pdf", 
-        "url": "http://public.docs-sandbox.ea.openprocurement.org/get/9b91133a0a6940bc8ad9fd791c5198ff?KeyID=020ebf5f&Signature=uDr98ViETfLfGDku8CdsQnPyXzSiWz7G9YEZyNW4eXE8bTM1NTiDh2MS5WcICnzjviQAanTWTCWkh2e0dgIaDg%253D%253D", 
+        "url": "http://public.docs-sandbox.ea.openprocurement.org/get/a896d2bee21d48669b866b658a2b5421?KeyID=9051732b&Signature=i6P59QQMzh8%252BfWJik6jodxWwsAdokeAWTfJbaM76B5amghHYoZqUgrQxx%252BUU3WDT9Tr5cxxwrps4%2FZixJDgFDw%253D%253D", 
         "author": "bid_owner", 
         "documentOf": "tender", 
-        "datePublished": "2017-10-11T12:57:48.992231+03:00", 
+        "datePublished": "2018-03-13T17:49:03.449202+02:00", 
         "documentType": "auctionProtocol", 
         "title": "SignedAuctionProtocol.pdf", 
-        "id": "8196ee8f7ca14cf78cb67d7a61557789"
+        "id": "dc7ccdfb41a44533a03a9cffff4a8850"
       }, 
       {
-        "dateModified": "2017-10-11T12:57:49.126339+03:00", 
+        "dateModified": "2018-03-13T17:49:03.539780+02:00", 
         "hash": "md5:00000000000000000000000000000000", 
         "format": "application/pdf", 
-        "url": "http://public.docs-sandbox.ea.openprocurement.org/get/4de03f89ace04036bfbce68cbbb207be?KeyID=020ebf5f&Signature=qup5E3zoqnuk8Qlwt9PO%252BEZly3JjPCc1PL5KZWQixxTQ9QwaBwpZnQtG%2FEpGzm5V7rn114AyzFuKkCsnwglaBQ%253D%253D", 
+        "url": "http://public.docs-sandbox.ea.openprocurement.org/get/d34f99a7d7974129b0b07a29cc6fab83?KeyID=9051732b&Signature=JfJFODRl68KuCQto%252BnHrgJeaQ7ZGLG8wRL42YA8PH5aDbXPDVds1gVQGyqTNXGKB7sqwdLnhRXGJpMLlpBIqCA%253D%253D", 
         "author": "auction_owner", 
         "documentOf": "tender", 
-        "datePublished": "2017-10-11T12:57:49.126312+03:00", 
+        "datePublished": "2018-03-13T17:49:03.539741+02:00", 
         "documentType": "auctionProtocol", 
         "title": "SignedAuctionProtocol.pdf", 
-        "id": "2254f3345ee94674ad8f22581063e738"
+        "id": "9aa74f7dd18a486d8f2950d1ca989ae7"
       }
     ], 
     "verificationPeriod": {
-      "startDate": "2017-10-11T12:57:48.582436+03:00", 
-      "endDate": "2017-10-11T12:57:49.273472+03:00"
+      "startDate": "2018-03-13T17:49:03.167518+02:00", 
+      "endDate": "2018-03-13T17:49:03.647933+02:00"
     }, 
-    "complaintPeriod": {
-      "startDate": "2017-10-11T12:57:48.582436+03:00", 
-      "endDate": "2017-10-11T12:57:49.441597+03:00"
+    "signingPeriod": {
+      "startDate": "2018-03-13T17:49:03.167518+02:00", 
+      "endDate": "2018-03-13T18:09:02.790434+02:00"
     }, 
     "suppliers": [
       {
@@ -77,18 +73,18 @@ Content-Type: application/json; charset=UTF-8
         }
       }
     ], 
-    "signingPeriod": {
-      "startDate": "2017-10-11T12:57:48.582436+03:00", 
-      "endDate": "2017-10-11T13:18:00.340769+03:00"
+    "complaintPeriod": {
+      "startDate": "2018-03-13T17:49:03.167518+02:00", 
+      "endDate": "2018-03-13T17:49:03.647933+02:00"
     }, 
-    "bid_id": "b20d99f8df054c699969509a1c496299", 
+    "bid_id": "86459d45ea7847a199f1ad3b0b983b05", 
     "value": {
       "currency": "UAH", 
       "amount": 479.0, 
       "valueAddedTaxIncluded": true
     }, 
-    "date": "2017-10-11T12:57:49.457872+03:00", 
-    "id": "6b48914d9d81462a95aa87dff79198f1"
+    "date": "2018-03-13T17:49:03.658341+02:00", 
+    "id": "7d4e36e2232f45b0910f887feaf23af1"
   }
 }
 

@@ -1,4 +1,4 @@
-GET /api/2.3/auctions/826ce0aeaf9a408487a657a5820b7c01/bids/8c99919d866948839e883c7d8440ec3e?acc_token=f95bff6de12b4f01a05b7f1de88b4b34 HTTP/1.0
+GET /api/2.3/auctions/ca31727f31f243b089cbc005b8fda5ba/bids/2d61cec5ecd340d5b72e8193a84ec6e1?acc_token=a2b9dcbe25774fe2a9331a7c5da3b88e HTTP/1.0
 Authorization: Basic YnJva2VyOg==
 Host: api-sandbox.ea.openprocurement.org
 
@@ -13,16 +13,16 @@ Content-Type: application/json; charset=UTF-8
       {
         "hash": "md5:00000000000000000000000000000000", 
         "format": "application/pdf", 
-        "url": "http://api-sandbox.ea.openprocurement.org/api/2.3/auctions/826ce0aeaf9a408487a657a5820b7c01/bids/8c99919d866948839e883c7d8440ec3e/documents/2b79ff3f505642fda483cb23d1881629?download=061d5768d1dc42f0bb8cb5c2149ab8e1", 
+        "url": "http://api-sandbox.ea.openprocurement.org/api/2.3/auctions/ca31727f31f243b089cbc005b8fda5ba/bids/2d61cec5ecd340d5b72e8193a84ec6e1/documents/bc8f62c615d8467fac907dd9b9522d6e?download=90f5ca27a7ea4708a1c3a8e79617a134", 
         "title": "Proposal.pdf", 
         "documentOf": "tender", 
-        "datePublished": "2017-10-11T12:57:47.696889+03:00", 
-        "dateModified": "2017-10-11T12:57:47.696916+03:00", 
-        "id": "2b79ff3f505642fda483cb23d1881629"
+        "datePublished": "2018-03-13T17:49:02.616512+02:00", 
+        "dateModified": "2018-03-13T17:49:02.616532+02:00", 
+        "id": "bc8f62c615d8467fac907dd9b9522d6e"
       }
     ], 
     "eligible": true, 
-    "date": "2017-10-11T12:57:47.519946+03:00", 
+    "date": "2018-03-13T17:49:02.490172+02:00", 
     "qualified": true, 
     "tenderers": [
       {
@@ -47,8 +47,8 @@ Content-Type: application/json; charset=UTF-8
       }
     ], 
     "owner": "broker", 
-    "id": "8c99919d866948839e883c7d8440ec3e", 
-    "participationUrl": "http://auction-sandbox.openprocurement.org/insider-auctions/826ce0aeaf9a408487a657a5820b7c01/login?bidder_id=8c99919d866948839e883c7d8440ec3e&signature=Fus6nfwW8sEQf6qGZbEpT%2BVcmrf0wvhatwoRJI0gLvpfMqCj4AzY364nT7VkgX4lPNdUWv9eKuiL%2Bf4f6qhvBg%3D%3D"
+    "id": "2d61cec5ecd340d5b72e8193a84ec6e1", 
+    "participationUrl": "http://auction-sandbox.openprocurement.org/insider-auctions/ca31727f31f243b089cbc005b8fda5ba/login?bidder_id=2d61cec5ecd340d5b72e8193a84ec6e1&signature=06SLpa1457CetL%2BUdB3Pza%2B6xacncLA8MFnKtQx%2B%2BFgm94uCVjeSxSqRtVlCIPQR1Ng64Mg5%2BMxy0GDRUFZBCw%3D%3D"
   }
 }
 

@@ -9,7 +9,7 @@ Host: api-sandbox.ea.openprocurement.org
     "title": "футляри до державних нагород", 
     "submissionMethodDetails": "quick", 
     "auctionPeriod": {
-      "startDate": "2017-10-11T13:02:40.602343"
+      "startDate": "2018-03-13T17:53:55.444611"
     }, 
     "tenderAttempts": 1, 
     "procurementMethodType": "dgfInsider", 
@@ -42,6 +42,13 @@ Host: api-sandbox.ea.openprocurement.org
     "procurementMethodDetails": "quick, accelerator=1440", 
     "items": [
       {
+        "classification": {
+          "scheme": "CAV", 
+          "id": "06000000-2", 
+          "description": "Земельні ділянки"
+        }, 
+        "quantity": 5, 
+        "description": "Земля для військовослужбовців", 
         "unit": {
           "code": "44617100-9", 
           "name": "item"
@@ -52,14 +59,7 @@ Host: api-sandbox.ea.openprocurement.org
           "region": "м. Київ", 
           "streetAddress": "вул. Банкова 1", 
           "locality": "м. Київ"
-        }, 
-        "description": "Земля для військовослужбовців", 
-        "classification": {
-          "scheme": "CAV", 
-          "id": "06000000-2", 
-          "description": "Земельні ділянки"
-        }, 
-        "quantity": 5
+        }
       }
     ], 
     "dgfID": "219560"
@@ -69,56 +69,56 @@ Host: api-sandbox.ea.openprocurement.org
 
 201 Created
 Content-Type: application/json; charset=UTF-8
-Location: http://api-sandbox.ea.openprocurement.org/api/2.3/auctions/708dad81999d434fb139d7ed14d941b2
+Location: http://api-sandbox.ea.openprocurement.org/api/2.3/auctions/3d856eef12cb497b9615a6a12b7a60be
 
 {
   "access": {
-    "token": "3fdb08ee18bb44308d7e163eaadcfd32"
+    "token": "4ac457c2a5ad4a57aa76415447039f8e"
   }, 
   "data": {
     "procurementMethod": "open", 
-    "auctionID": "UA-EA-2017-10-11-000001", 
+    "auctionID": "UA-EA-2018-03-13-000001", 
     "enquiryPeriod": {
-      "startDate": "2017-10-11T12:57:43.083586+03:00", 
-      "endDate": "2017-10-11T13:01:57.990813+03:00"
+      "startDate": "2018-03-13T17:48:58.955888+02:00", 
+      "endDate": "2018-03-13T17:53:00.697774+02:00"
     }, 
     "submissionMethod": "electronicAuction", 
     "dgfDecisionDate": "2016-11-17", 
-    "next_check": "2017-10-11T13:01:57.990813+03:00", 
+    "next_check": "2018-03-13T17:53:00.697774+02:00", 
     "awardCriteria": "highestCost", 
     "dgfDecisionID": "219560", 
     "owner": "broker", 
     "title_en": "[TESTING] ", 
-    "id": "708dad81999d434fb139d7ed14d941b2", 
+    "id": "3d856eef12cb497b9615a6a12b7a60be", 
     "eligibilityCriteria_ru": "Участником электронного аукциона, предметом продажи на которых являются права требования по кредитным договорам и договорам обеспечения, не может быть пользователь, являющийся заёмщиком (должником относительно банка) и\\или поручителем (имущественным поручителем) по таким кредитным договорам и/или договорам обеспечения.", 
     "documents": [
       {
         "title": "Місце та форма прийому заяв на участь в аукціоні та банківські реквізити для зарахування гарантійних внесків", 
         "url": "http://torgi.fg.gov.ua/prozorrosale", 
         "documentOf": "tender", 
-        "datePublished": "2017-10-11T12:57:43.084141+03:00", 
+        "datePublished": "2018-03-13T17:48:58.956225+02:00", 
         "documentType": "x_dgfPlatformLegalDetails", 
-        "dateModified": "2017-10-11T12:57:43.084176+03:00", 
-        "id": "db05ac0ed7b749db9a1dc622e0448fc1"
+        "dateModified": "2018-03-13T17:48:58.956247+02:00", 
+        "id": "8fcc2d90d05c47b8b18c0dc1b437baa4"
       }
     ], 
     "title": "[ТЕСТУВАННЯ] футляри до державних нагород", 
     "tenderAttempts": 1, 
     "eligibilityCriteria_en": "The user, who is the borrower (the debtor of the bank) and/or guarantor (property guarantor) for loan agreements and/or collateral agreements, cannot be the bidder of the electronic auction, where the items for sale are the claim rights on such loan agreements and collateral agreements.", 
     "procurementMethodDetails": "quick, accelerator=1440", 
-    "dateModified": "2017-10-11T12:57:43.088617+03:00", 
+    "dateModified": "2018-03-13T17:48:58.959057+02:00", 
     "status": "active.tendering", 
     "eligibilityCriteria": "Учасником електронного аукціону, предметом продажу на яких є права вимоги за кредитними договорами та договорами забезпечення, не може бути користувач, який є позичальником (боржником відносно банку) та/або поручителем (майновим поручителем) за такими кредитними договорами та/або договорами забезпечення.", 
     "tenderPeriod": {
-      "startDate": "2017-10-11T12:57:43.083586+03:00", 
-      "endDate": "2017-10-11T13:11:57.990813+03:00"
+      "startDate": "2018-03-13T17:48:58.955888+02:00", 
+      "endDate": "2018-03-13T18:03:00.697774+02:00"
     }, 
     "auctionPeriod": {
-      "shouldStartAfter": "2017-10-11T13:01:57.990813+03:00"
+      "shouldStartAfter": "2018-03-13T17:53:00.697774+02:00"
     }, 
     "procurementMethodType": "dgfInsider", 
     "dgfID": "219560", 
-    "date": "2017-10-11T12:57:43.083586+03:00", 
+    "date": "2018-03-13T17:48:58.955888+02:00", 
     "submissionMethodDetails": "quick", 
     "items": [
       {
@@ -135,7 +135,7 @@ Location: http://api-sandbox.ea.openprocurement.org/api/2.3/auctions/708dad81999
           "region": "м. Київ", 
           "locality": "м. Київ"
         }, 
-        "id": "04d11c4afede4bd2a0297effbd547fa6", 
+        "id": "22f197fcdf6045298840076991fadf0c", 
         "unit": {
           "code": "44617100-9", 
           "name": "item"

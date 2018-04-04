@@ -8,27 +8,43 @@ from schematics.transforms import blacklist, whitelist
 from schematics.types.serializable import serializable
 from zope.interface import implementer
 from openprocurement.api.models import (
-    Model, ListType
+    Model,
+    ListType
 )
 
 from openprocurement.api.utils import calculate_business_date
-from openprocurement.api.models import get_now, Value, Period, TZ, SANDBOX_MODE
-from openprocurement.auctions.core.models import IAuction
-from openprocurement.auctions.flash.models import COMPLAINT_STAND_STILL_TIME, auction_view_role
+from openprocurement.api.models import (
+    get_now,
+    Value,
+    Period,
+    TZ,
+    SANDBOX_MODE
+)
+from openprocurement.auctions.core.models import (
+    IAuction,
+    COMPLAINT_STAND_STILL_TIME,
+    get_auction,
+    dgfOrganization as Organization
+)
+from openprocurement.auctions.core.constants import DGF_PLATFORM_LEGAL_DETAILS
+from openprocurement.auctions.core.utils import rounding_shouldStartAfter_after_midnigth
 from openprocurement.auctions.dgf.models import (
     DGFFinancialAssets as BaseAuction,
-    get_auction, Bid as BaseBid,
-    Organization,
+    Bid as BaseBid,
     AuctionAuctionPeriod as BaseAuctionPeriod,
-    DGF_PLATFORM_LEGAL_DETAILS,
-    rounding_shouldStartAfter,
+)
+from openprocurement.auctions.core.models import (
     edit_role,
+    auction_view_role,
     Administrator_role
 )
 
 from openprocurement.auctions.insider.utils import generate_auction_url, calc_auction_end_time
-from openprocurement.auctions.insider.constants import DUTCH_PERIOD, QUICK_DUTCH_PERIOD, NUMBER_OF_STAGES
-
+from openprocurement.auctions.insider.constants import (
+    DUTCH_PERIOD,
+    QUICK_DUTCH_PERIOD,
+    NUMBER_OF_STAGES
+)
 
 
 class AuctionAuctionPeriod(BaseAuctionPeriod):
@@ -47,7 +63,7 @@ class AuctionAuctionPeriod(BaseAuctionPeriod):
             start_after = auction.enquiryPeriod.endDate
         else:
             return
-        return rounding_shouldStartAfter(start_after, auction).isoformat()
+        return rounding_shouldStartAfter_after_midnigth(start_after, auction).isoformat()
 
     def validate_startDate(self, data, startDate):
         auction = get_auction(data['__parent__'])
@@ -93,10 +109,13 @@ auction_view_role = (auction_view_role + whitelist('auctionParameters'))
 Administrator_role = (Administrator_role + whitelist('auctionParameters'))
 
 
-@implementer(IAuction)
+class IInsiderAuction(IAuction):
+    """Marker interface for Insider auctions"""
+
+
+@implementer(IInsiderAuction)
 class Auction(BaseAuction):
     """Data regarding auction process - publicly inviting prospective contractors to submit bids for evaluation and selecting a winner or winners."""
-
     class Options:
         roles = {
             'auction_view': auction_view_role,

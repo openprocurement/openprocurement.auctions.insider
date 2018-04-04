@@ -348,6 +348,40 @@ Let's see the list of all added contract documents:
 .. include:: tutorial/auction-contract-get-documents-again.http
    :code:
 
+Contract prolongation
+~~~~~~~~~~~~~~~~~~~~~
+
+Candidate can prolongate contract signing period by creating prolongation
+
+.. include:: tutorial/prolongation-create.http
+    :code:
+
+Prolongation must have documents attached to be prepared for activation
+
+.. include:: tutorial/prolongation-attach-document.http
+    :code:
+
+Created prolongation has status "draft" by default, so there is a need to set status to "applied" to make it active.
+
+.. include:: tutorial/prolongation-apply.http
+    :code:
+
+When a contract has been prolongated for first time, a short prolongation period applies.
+It is equal to 42 working days. It's also possible to apply long-term (132 days) prolongation:
+just create new :ref:`Prolongation` for the already prolongated :ref:`Contract`, and apply it.
+
+.. include:: tutorial/prolongation-second-time-create.http
+    :code:
+
+.. include:: tutorial/prolongation-long-document-attach.http
+    :code:
+
+.. include:: tutorial/prolongation-long-apply.http
+    :code:
+
+.. _Candidate_disqualification:
+    :code:
+
 Contract registration
 ~~~~~~~~~~~~~~~~~~~~~
 
