@@ -51,6 +51,11 @@ def from0to1(registry):
     docs = []
     for i in results:
         auction = i.doc
+        procurementMethodTypes = ['dgfInsider']
+        if (auction['procurementMethodType'] not in procurementMethodTypes
+                or auction['status'] not in ['active.qualification', 'active.awarded']
+                or 'awards' not in auction):
+            continue
         changed = migrate_awarding2_to_awarding3(auction, registry.server_id, ('dgfInsider'))
         if not changed:
             continue
