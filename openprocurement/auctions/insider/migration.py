@@ -93,7 +93,7 @@ def from1to2(registry):
 
         if auction['procurementMethodType'] != 'dgfInsider' or auction['status'] != 'active.awarded' or 'contracts' not in auction:
             continue
-
+        changed = False
         contract = filter(lambda x: x['status'] == 'pending', auction['contracts'])[0]
         award = filter(lambda x: x['id'] == contract['awardID'], auction['awards'])[0]
 
