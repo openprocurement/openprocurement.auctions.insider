@@ -1,7 +1,0 @@
----
-auctions.core:
-  plugins:
-    auctions.insider:
-      aliases: []
-      use_default: true
-      migration: false
