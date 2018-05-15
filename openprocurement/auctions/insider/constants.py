@@ -18,4 +18,4 @@ VIEW_LOCATIONS = [
     "openprocurement.auctions.insider.views",
 ]
 
-DEFAULT_PROCUREMENT_METHOD_TYPE = "exampleDGFInsider"
+DEFAULT_PROCUREMENT_METHOD_TYPE = "DGFInsider"

@@ -84,6 +84,7 @@ class InsiderAuctionContractDocumentResourceTest(BaseInsiderAuctionWebTest, Auct
     #initial_data = auction_data
     initial_status = 'active.auction'
     initial_bids = test_bids
+    docservice = True
 
     def setUp(self):
         super(InsiderAuctionContractDocumentResourceTest, self).setUp()
