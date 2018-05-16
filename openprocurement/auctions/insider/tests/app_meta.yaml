@@ -15,9 +15,13 @@ config:
   auth:
     type: file
     src: auth.ini
-  database:
-    couchdb.db_name: flash_tests
-    couchdb.url: http://op:op@localhost:5984/
-  docservice:
-    auction_url: http://auction-sandbox.openprocurement.org
-    auction_public_key: fe3b3b5999a08e68dfe62687c2ae147f62712ceace58c1ffca8ea819eabcb5d1
+  db:
+    type: couchdb
+    db_name: insider_tests
+    url: localhost:5984
+    writer:
+      name: op
+      password: op
+  auction:
+    url: http://auction-sandbox.openprocurement.org
+    public_key: fe3b3b5999a08e68dfe62687c2ae147f62712ceace58c1ffca8ea819eabcb5d1
