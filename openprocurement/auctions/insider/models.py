@@ -135,7 +135,7 @@ class IInsiderAuction(IAuction):
 
 
 @implementer(IInsiderAuction)
-class Auction(BaseAuction):
+class DGFInsider(BaseAuction):
     """Data regarding auction process - publicly inviting prospective contractors to submit bids for evaluation and selecting a winner or winners."""
     class Options:
         roles = dgf_auction_roles
@@ -287,5 +287,3 @@ class Auction(BaseAuction):
                         checks.append(calculate_business_date(complaint.dateAnswered, AUCTIONS_COMPLAINT_STAND_STILL_TIME, self))
         return min(checks).isoformat() if checks else None
 
-
-DGFInsider = Auction
