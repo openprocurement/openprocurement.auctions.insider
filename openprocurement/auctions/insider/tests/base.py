@@ -14,6 +14,15 @@ from openprocurement.auctions.core.utils import apply_data_patch
 
 from openprocurement.auctions.insider.constants import DEFAULT_PROCUREMENT_METHOD_TYPE
 
+
+from openprocurement.auctions.insider.tests.fixtures import (
+    MOCK_CONFIG_PARTIAL_PLUGINS,
+    MOCK_CONFIG_PARTIAL_AUCTION
+)
+
+from openprocurement.auctions.core.tests.base import MOCK_CONFIG as BASE_MOCK_CONFIG
+from openprocurement.auctions.core.utils import connection_mock_config
+
 now = datetime.now()
 test_insider_auction_data = deepcopy(test_auction_data)
 
@@ -64,6 +73,16 @@ for data in test_insider_auction_data, test_insider_auction_data_with_schema:
     del data['minimalStep']
 
 
+_MOCK_CONFIG = connection_mock_config(MOCK_CONFIG_PARTIAL_PLUGINS,
+                                     base=BASE_MOCK_CONFIG,
+                                     connector=('plugins', 'api', 'plugins',
+                                                'auctions.core', 'plugins'))
+
+MOCK_CONFIG = connection_mock_config(MOCK_CONFIG_PARTIAL_AUCTION,
+                                     base=_MOCK_CONFIG,
+                                     connector=('config','auction'))
+
+
 class BaseInsiderWebTest(BaseWebTest):
 
     """Base Web Test to test openprocurement.auctions.insider.
@@ -72,12 +91,14 @@ class BaseInsiderWebTest(BaseWebTest):
     """
 
     relative_to = os.path.dirname(__file__)
+    mock_config = MOCK_CONFIG
 
 
 class BaseInsiderAuctionWebTest(BaseAuctionWebTest):
     relative_to = os.path.dirname(__file__)
     initial_data = test_insider_auction_data
     initial_organization = test_organization
+    mock_config = MOCK_CONFIG
 
     def set_status(self, status, extra=None):
         data = {'status': status}
