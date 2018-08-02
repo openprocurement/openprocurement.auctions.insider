@@ -257,12 +257,12 @@ def post_auction_one_bid_without_value(self):
 
 def post_auction_one_valid_bid(self):
     self.app.authorization = ('Basic', ('auction', ''))
-    
+
     response = self.app.get('/auctions/{}'.format(self.auction_id))
     self.assertEqual(response.status, '200 OK')
     auction = response.json['data']
     value_threshold = auction['value']['amount'] + auction['minimalStep']['amount']
-    
+
     bids = deepcopy(self.initial_bids)
     bids[0]['value'] = {'amount': value_threshold}
 
@@ -282,7 +282,7 @@ def post_auction_zero_bids(self):
     response = self.app.get('/auctions/{}'.format(self.auction_id))
     self.assertEqual(response.status, '200 OK')
 
-    response = self.app.post_json('/auctions/{}/auction'.format(self.auction_id),{'data': {'bids': []}})
+    response = self.app.post_json('/auctions/{}/auction'.format(self.auction_id), {'data': {'bids': []}})
     self.assertEqual(response.status, '200 OK')
     self.assertEqual(response.content_type, 'application/json')
     auction = response.json['data']
@@ -377,10 +377,36 @@ def post_auction_no_bids(self):
     response = self.app.get('/auctions/{}'.format(self.auction_id))
     self.assertEqual(response.status, '200 OK')
 
-    response = self.app.post_json('/auctions/{}/auction'.format(self.auction_id),{'data': {'bids': []}})
+    response = self.app.post_json('/auctions/{}/auction'.format(self.auction_id), {'data': {'bids': []}})
     self.assertEqual(response.status, '200 OK')
     self.assertEqual(response.content_type, 'application/json')
     auction = response.json['data']
 
     self.assertEqual('unsuccessful', auction["status"])
     self.assertNotIn('bids', auction)
+
+
+def koatuu_additional_classification(self):
+    input_classification = [{"scheme": "koatuu",
+                             "id": "0110136600",
+                             "description": "test"}]
+
+    initial_data = deepcopy(self.initial_data)
+    initial_data['items'][0]['additionalClassifications'] = input_classification
+
+    auction = self.create_auction_unit(data=initial_data)
+
+    output_classification = auction['data']['items'][0]['additionalClassifications']
+
+    self.assertEqual(input_classification, output_classification)
+
+    input_classification[0]['id'] = '01101366000'
+    response = self.create_auction_unit(data=initial_data, status=201)
+
+    input_classification[0]['id'] = '1110136600'
+    response = self.create_auction_unit(data=initial_data, status=422)
+    self.assertEqual(response['status'], 'error')
+
+    input_classification[0]['id'] = '7510136600'
+    response = self.create_auction_unit(data=initial_data, status=422)
+    self.assertEqual(response['status'], 'error')
