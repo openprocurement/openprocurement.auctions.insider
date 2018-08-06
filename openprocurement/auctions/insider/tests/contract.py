@@ -58,7 +58,6 @@ class InsiderAuctionContractResourceTest(
 
         self.set_status('active.qualification')
 
-        self.app.authorization = ('Basic', ('token', ''))
         response = self.app.post('/auctions/{}/awards/{}/documents?acc_token={}'.format(
             self.auction_id, self.award_id, self.auction_token), upload_files=[('file', 'auction_protocol.pdf', 'content')])
         self.assertEqual(response.status, '201 Created')
@@ -74,7 +73,9 @@ class InsiderAuctionContractResourceTest(
         self.assertEqual(response.json["data"]["documentType"], 'auctionProtocol')
         self.assertEqual(response.json["data"]["author"], 'auction_owner')
 
-        self.app.patch_json('/auctions/{}/awards/{}'.format(self.auction_id, self.award_id), {"data": {"status": "active"}})
+        self.app.patch_json('/auctions/{}/awards/{}?acc_token={}'.format(
+            self.auction_id, self.award_id, self.auction_token
+        ), {"data": {"status": "active"}})
         response = self.app.get('/auctions/{}'.format(self.auction_id))
         auction = response.json['data']
         self.award_contract_id = auction['contracts'][0]['id']
@@ -120,7 +121,6 @@ class InsiderAuctionContractDocumentResourceTest(BaseInsiderAuctionWebTest, Auct
 
         self.set_status('active.qualification')
 
-        self.app.authorization = ('Basic', ('token', ''))
         response = self.app.post('/auctions/{}/awards/{}/documents?acc_token={}'.format(
             self.auction_id, self.award_id, self.auction_token), upload_files=[('file', 'auction_protocol.pdf', 'content')])
         self.assertEqual(response.status, '201 Created')
@@ -136,10 +136,12 @@ class InsiderAuctionContractDocumentResourceTest(BaseInsiderAuctionWebTest, Auct
         self.assertEqual(response.json["data"]["documentType"], 'auctionProtocol')
         self.assertEqual(response.json["data"]["author"], 'auction_owner')
 
-        self.app.patch_json('/auctions/{}/awards/{}'.format(self.auction_id, self.award_id), {"data": {"status": "active"}})
-        # Create contract for award
-        response = self.app.post_json('/auctions/{}/contracts'.format(self.auction_id), {'data': {'title': 'contract title', 'description': 'contract description', 'awardID': self.award_id}})
-        contract = response.json['data']
+        self.app.patch_json('/auctions/{}/awards/{}?acc_token={}'.format(
+            self.auction_id, self.award_id, self.auction_token
+        ), {"data": {"status": "active"}})
+        # Getting contract for award
+        response = self.app.get('/auctions/{}/contracts'.format(self.auction_id))
+        contract = response.json['data'][0]
         self.contract_id = contract['id']
 
 

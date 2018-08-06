@@ -7,6 +7,7 @@ from openprocurement.auctions.core.utils import get_now
 
 
 def get_auction_auction(self):
+    self.app.authorization = ('Basic', ('auction', ''))
     response = self.app.get('/auctions/{}/auction'.format(self.auction_id))
     self.assertEqual(response.status, '200 OK')
     self.assertEqual(response.content_type, 'application/json')

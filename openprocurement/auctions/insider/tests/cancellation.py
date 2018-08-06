@@ -22,8 +22,9 @@ class InsiderAuctionCancellationDocumentResourceTest(BaseInsiderAuctionWebTest,
     def setUp(self):
         super(InsiderAuctionCancellationDocumentResourceTest, self).setUp()
         # Create cancellation
-        response = self.app.post_json('/auctions/{}/cancellations'.format(
-            self.auction_id), {'data': {'reason': 'cancellation reason'}})
+        response = self.app.post_json('/auctions/{}/cancellations?acc_token={}'.format(
+            self.auction_id, self.auction_token
+        ), {'data': {'reason': 'cancellation reason'}})
         cancellation = response.json['data']
         self.cancellation_id = cancellation['id']
 
