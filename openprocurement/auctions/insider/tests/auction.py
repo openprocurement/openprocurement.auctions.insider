@@ -5,6 +5,7 @@ from openprocurement.auctions.core.tests.base import snitch
 from openprocurement.auctions.core.tests.blanks.auction_blanks import (
     get_auction_auction_not_found,
     post_auction_auction_document,
+    koatuu_additional_classification
 )
 from openprocurement.auctions.insider.tests.base import (
     BaseInsiderAuctionWebTest,
@@ -28,8 +29,7 @@ from openprocurement.auctions.insider.tests.blanks.auction_blanks import (
     post_auction_auction_not_changed,
     post_auction_auction_reversed,
     # InsiderAuctionNoBidsResourceTest
-    post_auction_no_bids,
-    koatuu_additional_classification
+    post_auction_no_bids
 )
 
 
@@ -75,7 +75,7 @@ class InsiderAuctionDraftBidAuctionResourceTest(BaseInsiderAuctionWebTest):
             ],
             'qualified': True,
             "eligible": True,
-            'status' : 'draft'
+            'status': 'draft'
         }
         for i in range(3)
     ]
