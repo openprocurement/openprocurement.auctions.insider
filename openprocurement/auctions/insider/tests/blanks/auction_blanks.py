@@ -257,12 +257,12 @@ def post_auction_one_bid_without_value(self):
 
 def post_auction_one_valid_bid(self):
     self.app.authorization = ('Basic', ('auction', ''))
-    
+
     response = self.app.get('/auctions/{}'.format(self.auction_id))
     self.assertEqual(response.status, '200 OK')
     auction = response.json['data']
     value_threshold = auction['value']['amount'] + auction['minimalStep']['amount']
-    
+
     bids = deepcopy(self.initial_bids)
     bids[0]['value'] = {'amount': value_threshold}
 
@@ -282,7 +282,7 @@ def post_auction_zero_bids(self):
     response = self.app.get('/auctions/{}'.format(self.auction_id))
     self.assertEqual(response.status, '200 OK')
 
-    response = self.app.post_json('/auctions/{}/auction'.format(self.auction_id),{'data': {'bids': []}})
+    response = self.app.post_json('/auctions/{}/auction'.format(self.auction_id), {'data': {'bids': []}})
     self.assertEqual(response.status, '200 OK')
     self.assertEqual(response.content_type, 'application/json')
     auction = response.json['data']
@@ -377,7 +377,7 @@ def post_auction_no_bids(self):
     response = self.app.get('/auctions/{}'.format(self.auction_id))
     self.assertEqual(response.status, '200 OK')
 
-    response = self.app.post_json('/auctions/{}/auction'.format(self.auction_id),{'data': {'bids': []}})
+    response = self.app.post_json('/auctions/{}/auction'.format(self.auction_id), {'data': {'bids': []}})
     self.assertEqual(response.status, '200 OK')
     self.assertEqual(response.content_type, 'application/json')
     auction = response.json['data']

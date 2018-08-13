@@ -4,7 +4,8 @@ import unittest
 from openprocurement.auctions.core.tests.base import snitch
 from openprocurement.auctions.core.tests.blanks.auction_blanks import (
     get_auction_auction_not_found,
-    post_auction_auction_document
+    post_auction_auction_document,
+    koatuu_additional_classification
 )
 from openprocurement.auctions.insider.tests.base import (
     BaseInsiderAuctionWebTest,
@@ -41,6 +42,7 @@ class InsiderAuctionAuctionResourceTest(BaseInsiderAuctionWebTest):
     test_post_auction_auction = snitch(post_auction_auction)
     test_patch_auction_auction = snitch(patch_auction_auction)
     test_post_auction_auction_document = snitch(post_auction_auction_document)
+    test_koatuu_additional_classification = snitch(koatuu_additional_classification)
 
 
 class InsiderAuctionBidInvalidationAuctionResourceTest(BaseInsiderAuctionWebTest):
@@ -73,7 +75,7 @@ class InsiderAuctionDraftBidAuctionResourceTest(BaseInsiderAuctionWebTest):
             ],
             'qualified': True,
             "eligible": True,
-            'status' : 'draft'
+            'status': 'draft'
         }
         for i in range(3)
     ]
