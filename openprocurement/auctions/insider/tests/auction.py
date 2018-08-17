@@ -31,6 +31,9 @@ from openprocurement.auctions.insider.tests.blanks.auction_blanks import (
     # InsiderAuctionNoBidsResourceTest
     post_auction_no_bids
 )
+from openprocurement.auctions.core.tests.auctions import (
+    AuctionRectificationPeriodTestMixin,
+)
 
 
 class InsiderAuctionAuctionResourceTest(BaseInsiderAuctionWebTest):
@@ -105,6 +108,10 @@ class InsiderAuctionNoBidsResourceTest(BaseInsiderAuctionWebTest):
 
     test_post_auction_zero_bids = snitch(post_auction_no_bids)
 
+class InsiderAuctionRectificationPeriodTest(BaseInsiderAuctionWebTest, AuctionRectificationPeriodTestMixin):
+    initial_status = 'active.tendering'
+    initial_bids = test_bids
+
 
 def suite():
     tests = unittest.TestSuite()
@@ -113,6 +120,7 @@ def suite():
     tests.addTest(unittest.makeSuite(InsiderAuctionDraftBidAuctionResourceTest))
     tests.addTest(unittest.makeSuite(InsiderAuctionSameValueAuctionResourceTest))
     tests.addTest(unittest.makeSuite(InsiderAuctionNoBidsResourceTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionRectificationPeriodTest))
     return tests
 
 
