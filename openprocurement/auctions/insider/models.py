@@ -16,14 +16,13 @@ from openprocurement.auctions.core.constants import (
     DGF_ID_REQUIRED_FROM,
     DGF_DECISION_REQUIRED_FROM,
 )
-from openprocurement.auctions.core.models import (
+from openprocurement.auctions.core.models.schema import (
     Auction as BaseAuction,
     dgfItem as Item,
     dgfDocument as Document,
     dgfComplaint as Complaint,
     dgfCancellation as Cancellation,
     AuctionParameters as BaseAuctionParameters,
-    dgf_auction_roles,
     ComplaintModelType,
     Model,
     ListType,
@@ -38,6 +37,9 @@ from openprocurement.auctions.core.models import (
     validate_lots_uniq,
     validate_items_uniq,
     validate_not_available
+)
+from openprocurement.auctions.core.models.roles import (
+    dgf_auction_roles,
 )
 from openprocurement.auctions.core.plugins.awarding.v3.models import (
     Award
