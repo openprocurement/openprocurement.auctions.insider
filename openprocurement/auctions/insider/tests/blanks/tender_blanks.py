@@ -53,7 +53,7 @@ def create_role(self):
 
 
 def edit_role(self):
-    fields = set([
+    fields_allowed_to_edit = set([
         'description',
         'description_en',
         'description_ru',
@@ -61,16 +61,22 @@ def edit_role(self):
         'dgfDecisionID',
         'dgfID',
         'features',
+        'guarantee',
         'hasEnquiries',
-        'merchandisingObject',
+        'items',
+        'minimalStep',
         'tenderAttempts',
         'title',
         'title_en',
         'title_ru',
     ])
     if SANDBOX_MODE:
-        fields.add('procurementMethodDetails')
-    self.assertEqual(set(self.auction._fields) - self.auction._options.roles['edit_active.tendering'].fields, fields)
+        fields_allowed_to_edit.add('procurementMethodDetails')
+    self.assertEqual(
+        set(self.auction._fields) - \
+            self.auction._options.roles['edit_active.tendering_during_rectificationPeriod'].fields,
+        fields_allowed_to_edit
+    )
 
 
 # InsiderAuctionResourceTest
@@ -323,11 +329,35 @@ def create_auction_generated(self):
         if key in auction:
             auction.pop(key)
     self.assertEqual(set(auction), set([
-        u'procurementMethodType', u'id', u'date', u'dateModified', u'auctionID', u'status', u'enquiryPeriod',
-        u'tenderPeriod', u'minimalStep', u'items', u'value', u'procuringEntity', u'next_check', u'dgfID',
-        u'procurementMethod', u'awardCriteria', u'submissionMethod', u'title', u'owner', u'auctionPeriod',
-        u'eligibilityCriteria', u'eligibilityCriteria_en', u'eligibilityCriteria_ru', 'documents',
-        u'dgfDecisionDate', u'dgfDecisionID', u'tenderAttempts', u'auctionParameters',
+        u'auctionID',
+        u'auctionParameters',
+        u'auctionPeriod',
+        u'awardCriteria',
+        u'date',
+        u'dateModified',
+        u'dgfDecisionDate',
+        u'dgfDecisionID',
+        u'dgfID',
+        u'documents',
+        u'eligibilityCriteria',
+        u'eligibilityCriteria_en',
+        u'eligibilityCriteria_ru',
+        u'enquiryPeriod',
+        u'id',
+        u'items',
+        u'minimalStep',
+        u'next_check',
+        u'owner',
+        u'procurementMethod',
+        u'procurementMethodType',
+        u'procuringEntity',
+        u'rectificationPeriod',
+        u'status',
+        u'submissionMethod',
+        u'tenderAttempts',
+        u'tenderPeriod',
+        u'title',
+        u'value',
     ]))
     self.assertNotEqual(data['id'], auction['id'])
     self.assertNotEqual(data['doc_id'], auction['id'])
@@ -349,9 +379,25 @@ def create_auction(self):
     auction = response.json['data']
     if self.initial_organization == self.test_financial_organization:
         self.assertEqual(set(auction) - set(self.initial_data), set([
-            u'id', u'dateModified', u'auctionID', u'date', u'status', u'procurementMethod', 'documents',
-            u'awardCriteria', u'submissionMethod', u'next_check', u'owner', u'enquiryPeriod', u'tenderPeriod',
-            u'eligibilityCriteria_en', u'eligibilityCriteria', u'eligibilityCriteria_ru', u'minimalStep', u'auctionParameters',
+            u'auctionID',
+            u'auctionParameters',
+            u'awardCriteria',
+            u'date',
+            u'dateModified',
+            u'documents',
+            u'eligibilityCriteria',
+            u'eligibilityCriteria_en',
+            u'eligibilityCriteria_ru',
+            u'enquiryPeriod',
+            u'id',
+            u'minimalStep',
+            u'next_check',
+            u'owner',
+            u'procurementMethod',
+            u'rectificationPeriod',
+            u'status',
+            u'submissionMethod',
+            u'tenderPeriod',
         ]))
     else:
         self.assertEqual(set(auction) - set(self.initial_data), set([
