@@ -19,7 +19,7 @@ from openprocurement.auctions.insider.tests.base import (
 
 
 class InsiderAuctionCreateAwardTest(BaseInsiderAuctionWebTest, CreateAuctionAwardTestMixin):
-    initial_status = 'active.qualification'
+    initial_status = 'active.auction'
     initial_bids = test_bids
 
 
@@ -86,7 +86,6 @@ class InsiderAuctionAwardProcessTest(BaseInsiderAuctionWebTest, AuctionAwardProc
 
         authorization = self.app.authorization
         self.app.authorization = ('Basic', ('auction', ''))
-        now = get_now()
         response = self.app.get('/auctions/{}'.format(self.auction_id))
         self.assertEqual(response.status, '200 OK')
         auction = response.json['data']
