@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
-from pytz import UTC
-
 from pyramid.security import Allow
 from schematics.exceptions import ValidationError
-from schematics.transforms import whitelist
 from schematics.types import StringType, BooleanType, IntType, DateType, MD5Type
 from schematics.types.compound import ModelType
-from schematics.exceptions import ValidationError
-from schematics.transforms import blacklist, whitelist
+from schematics.transforms import whitelist
 
 from schematics.types.serializable import serializable
 from zope.interface import implementer
@@ -20,28 +16,31 @@ from openprocurement.auctions.core.constants import (
     DGF_ID_REQUIRED_FROM,
     DGF_DECISION_REQUIRED_FROM,
 )
-from openprocurement.auctions.core.models import (
+from openprocurement.auctions.core.models.schema import (
     Auction as BaseAuction,
-    dgfItem as Item,
-    dgfDocument as Document,
-    dgfComplaint as Complaint,
-    dgfCancellation as Cancellation,
     AuctionParameters as BaseAuctionParameters,
-    dgf_auction_roles,
-    ComplaintModelType,
-    Model,
-    ListType,
-    Value,
-    Period,
-    IAuction,
-    get_auction,
     Bid as BaseBid,
+    ComplaintModelType,
     Feature,
+    IAuction,
+    ListType,
     Lot,
+    Model,
+    Period,
+    RectificationPeriod,
+    Value,
+    dgfCancellation as Cancellation,
+    dgfComplaint as Complaint,
+    dgfDocument as Document,
+    dgfItem as Item,
+    get_auction,
     validate_features_uniq,
-    validate_lots_uniq,
     validate_items_uniq,
-    validate_not_available
+    validate_lots_uniq,
+    validate_not_available,
+)
+from openprocurement.auctions.core.models.roles import (
+    dgf_auction_roles,
 )
 from openprocurement.auctions.core.plugins.awarding.v3.models import (
     Award
@@ -60,8 +59,9 @@ from openprocurement.auctions.core.utils import (
 
 from openprocurement.auctions.insider.constants import (
     DUTCH_PERIOD,
+    NUMBER_OF_STAGES,
     QUICK_DUTCH_PERIOD,
-    NUMBER_OF_STAGES
+    RECTIFICATION_PERIOD_DURATION,
 )
 from openprocurement.auctions.insider.utils import generate_auction_url, calc_auction_end_time
 
@@ -165,6 +165,7 @@ class DGFInsider(BaseAuction):
     eligibilityCriteria = StringType(default=DGF_ELIGIBILITY_CRITERIA['ua'])
     eligibilityCriteria_en = StringType(default=DGF_ELIGIBILITY_CRITERIA['en'])
     eligibilityCriteria_ru = StringType(default=DGF_ELIGIBILITY_CRITERIA['ru'])
+    rectificationPeriod = ModelType(RectificationPeriod)
 
     def __acl__(self):
         return [
@@ -195,6 +196,52 @@ class DGFInsider(BaseAuction):
         self.documents.append(type(self).documents.model_class(DGF_PLATFORM_LEGAL_DETAILS))
         if not self.auctionParameters:
             self.auctionParameters = type(self).auctionParameters.model_class()
+
+    def get_role(self):
+        root = self.__parent__
+        request = root.request
+        if request.authenticated_role == 'Administrator':
+            role = 'Administrator'
+        elif request.authenticated_role == 'chronograph':
+            role = 'chronograph'
+        elif request.authenticated_role == 'auction':
+            role = 'auction_{}'.format(request.method.lower())
+        elif request.authenticated_role == 'contracting':
+            role = 'contracting'
+        else:  # on PATCH of the owner
+            now = get_now()
+            if self.status == 'active.tendering':
+                if now in self.rectificationPeriod:
+                    role = 'edit_active.tendering_during_rectificationPeriod'
+                else:
+                    role = 'edit_active.tendering_after_rectificationPeriod'
+            else:
+                role = 'edit_{0}'.format(self.status)
+        return role
+
+    @serializable(serialized_name='rectificationPeriod', serialize_when_none=False)
+    def generate_rectificationPeriod(self):
+        """Generate rectificationPeriod only when it not defined"""
+        # avoid period generation if
+        if (
+            # it's already generated
+            (
+                getattr(self, 'rectificationPeriod', False)
+                # and not just present, but actually holds some real value
+                and self.rectificationPeriod.startDate is not None
+            )
+            # or trere's no period on that our code is dependant
+            or getattr(self, 'tenderPeriod') is None
+        ):
+            return
+        start = self.tenderPeriod.startDate
+        end = calculate_business_date(start, RECTIFICATION_PERIOD_DURATION, self, working_days=True)
+
+        period = RectificationPeriod()
+        period.startDate = start
+        period.endDate = end
+
+        return period.serialize()
 
     def validate_documents(self, data, docs):
         if (data.get('revisions')[0].date if data.get('revisions') else get_now()) > DGF_PLATFORM_LEGAL_DETAILS_FROM and \
@@ -286,4 +333,3 @@ class DGFInsider(BaseAuction):
                     elif complaint.status == 'answered' and complaint.dateAnswered:
                         checks.append(calculate_business_date(complaint.dateAnswered, AUCTIONS_COMPLAINT_STAND_STILL_TIME, self))
         return min(checks).isoformat() if checks else None
-
