@@ -14,14 +14,38 @@ from openprocurement.auctions.core.utils import (
 
 def create_role(self):
     fields = set([
-        'awardCriteriaDetails', 'awardCriteriaDetails_en', 'awardCriteriaDetails_ru',
-        'description', 'description_en', 'description_ru', 'dgfID', 'tenderAttempts',
-        'features', 'guarantee', 'hasEnquiries', 'items', 'lots', 'minimalStep', 'mode',
-        'procurementMethodRationale', 'procurementMethodRationale_en', 'procurementMethodRationale_ru',
-        'procurementMethodType', 'procuringEntity',
-        'submissionMethodDetails', 'submissionMethodDetails_en', 'submissionMethodDetails_ru',
-        'title', 'title_en', 'title_ru', 'value', 'auctionPeriod',
-        'dgfDecisionDate', 'dgfDecisionID', 'auctionParameters', 'merchandisingObject'
+        'auctionParameters',
+        'auctionPeriod',
+        'awardCriteriaDetails',
+        'awardCriteriaDetails_en',
+        'awardCriteriaDetails_ru',
+        'description',
+        'description_en',
+        'description_ru',
+        'dgfDecisionDate',
+        'dgfDecisionID',
+        'dgfID',
+        'features',
+        'guarantee',
+        'hasEnquiries',
+        'items',
+        'lots',
+        'merchandisingObject',
+        'minimalStep',
+        'mode',
+        'procurementMethodRationale',
+        'procurementMethodRationale_en',
+        'procurementMethodRationale_ru',
+        'procurementMethodType',
+        'procuringEntity',
+        'submissionMethodDetails',
+        'submissionMethodDetails_en',
+        'submissionMethodDetails_ru',
+        'tenderAttempts',
+        'title',
+        'title_en',
+        'title_ru',
+        'value',
     ])
     if SANDBOX_MODE:
         fields.add('procurementMethodDetails')
@@ -30,9 +54,19 @@ def create_role(self):
 
 def edit_role(self):
     fields = set([
-        'features', 'hasEnquiries', 'description', 'description_en', 'description_ru',
-        'title', 'title_en', 'title_ru', 'dgfID', 'dgfDecisionDate', 'dgfDecisionID', 'tenderAttempts',
-        'merchandisingObject'
+        'description',
+        'description_en',
+        'description_ru',
+        'dgfDecisionDate',
+        'dgfDecisionID',
+        'dgfID',
+        'features',
+        'hasEnquiries',
+        'merchandisingObject',
+        'tenderAttempts',
+        'title',
+        'title_en',
+        'title_ru',
     ])
     if SANDBOX_MODE:
         fields.add('procurementMethodDetails')

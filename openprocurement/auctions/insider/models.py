@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
-from pytz import UTC
-
 from pyramid.security import Allow
 from schematics.exceptions import ValidationError
-from schematics.transforms import whitelist
 from schematics.types import StringType, BooleanType, IntType, DateType, MD5Type
 from schematics.types.compound import ModelType
-from schematics.exceptions import ValidationError
-from schematics.transforms import blacklist, whitelist
+from schematics.transforms import whitelist
 
 from schematics.types.serializable import serializable
 from zope.interface import implementer
@@ -286,4 +282,3 @@ class DGFInsider(BaseAuction):
                     elif complaint.status == 'answered' and complaint.dateAnswered:
                         checks.append(calculate_business_date(complaint.dateAnswered, AUCTIONS_COMPLAINT_STAND_STILL_TIME, self))
         return min(checks).isoformat() if checks else None
-
