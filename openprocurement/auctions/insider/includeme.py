@@ -42,4 +42,4 @@ def includeme(config, plugin_config=None):
     LOGGER.info("Included openprocurement.auctions.insider plugin", extra={'MESSAGE_ID': 'included_plugin'})
 
     # add accreditation level
-    config.registry.accreditations['auction'][DGFInsider._internal_type] = plugin_config['accreditation']
+    config.registry.accreditation['auction'][DGFInsider._internal_type] = plugin_config['accreditation']
