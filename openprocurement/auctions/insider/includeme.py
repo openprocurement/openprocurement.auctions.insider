@@ -11,7 +11,9 @@ from openprocurement.auctions.insider.adapters import (
     AuctionInsiderManagerAdapter
 )
 from openprocurement.auctions.insider.constants import (
-    VIEW_LOCATIONS, DEFAULT_PROCUREMENT_METHOD_TYPE
+    VIEW_LOCATIONS,
+    DEFAULT_PROCUREMENT_METHOD_TYPE,
+    DEFAULT_LEVEL_OF_ACCREDITATION
 )
 
 LOGGER = logging.getLogger(__name__)
@@ -40,3 +42,9 @@ def includeme(config, plugin_config=None):
     )
 
     LOGGER.info("Included openprocurement.auctions.insider plugin", extra={'MESSAGE_ID': 'included_plugin'})
+
+    # add accreditation level
+    if not plugin_config.get('accreditation'):
+        config.registry.accreditation['auction'][DGFInsider._internal_type] = DEFAULT_LEVEL_OF_ACCREDITATION
+    else:
+        config.registry.accreditation['auction'][DGFInsider._internal_type] = plugin_config['accreditation']

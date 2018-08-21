@@ -139,7 +139,7 @@ class DGFInsider(BaseAuction):
     """Data regarding auction process - publicly inviting prospective contractors to submit bids for evaluation and selecting a winner or winners."""
     class Options:
         roles = dgf_auction_roles
-    _procedure_type = "dgfInsider"
+    _internal_type = "dgfInsider"
     awards = ListType(ModelType(Award), default=list())
     cancellations = ListType(ModelType(Cancellation), default=list())
     complaints = ListType(ComplaintModelType(Complaint), default=list())

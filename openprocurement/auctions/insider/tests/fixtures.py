@@ -5,7 +5,11 @@ MOCK_CONFIG_PARTIAL_PLUGINS = {
             "insider.migration":None
         },
         "migration":False,
-        "aliases":[]
+        "aliases":[],
+        "accreditation": {
+            "create": [1],
+            "edit": [2]
+        }
     }
 }
 
