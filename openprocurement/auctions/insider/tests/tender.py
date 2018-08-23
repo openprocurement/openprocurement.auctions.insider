@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 import unittest
 from copy import deepcopy
-from datetime import datetime, timedelta, time
-from uuid import uuid4
-from iso8601 import parse_date
-import pytz
 
 from openprocurement.auctions.core.tests.base import snitch
 from openprocurement.auctions.core.tests.tender import (
-    AuctionResourceTestMixin, DgfInsiderResourceTestMixin
+    AuctionResourceTestMixin,
+    DgfInsiderResourceTestMixin,
+    ExtractCredentialsMixin
 )
 from openprocurement.auctions.core.tests.blanks.tender_blanks import (
     # AuctionTest
@@ -24,8 +22,10 @@ from openprocurement.auctions.insider.models import DGFInsider
 from openprocurement.auctions.insider.tests.base import (
     test_insider_auction_data,
     test_organization,
-    BaseInsiderAuctionWebTest, BaseInsiderWebTest,
-    test_insider_auction_data_with_schema, test_insider_auction_data_with_schema,
+    BaseInsiderAuctionWebTest,
+    BaseInsiderWebTest,
+    test_insider_auction_data_with_schema,
+    test_insider_auction_data_with_schema,
 )
 from openprocurement.auctions.insider.tests.blanks.tender_blanks import (
     # InsiderAuctionTest
@@ -175,6 +175,9 @@ class InsiderAuctionSchemaProcessTest(InsiderAuctionProcessTest):
     initial_data = test_insider_auction_data_with_schema
 
 
+class AuctionExtractCredentialsTest(BaseInsiderAuctionWebTest, ExtractCredentialsMixin):
+    pass
+
 def suite():
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(InsiderAuctionProcessTest))
@@ -182,7 +185,7 @@ def suite():
     suite.addTest(unittest.makeSuite(InsiderAuctionTest))
     suite.addTest(unittest.makeSuite(InsiderAuctionSchemaResourceTest))
     suite.addTest(unittest.makeSuite(InsiderAuctionSchemaProcessTest))
-
+    suite.addTest(unittest.makeSuite(AuctionExtractCredentialsTest))
     return suite
 
 
