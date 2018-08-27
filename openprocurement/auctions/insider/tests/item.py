@@ -9,7 +9,7 @@ from openprocurement.auctions.core.tests.items import (
 )
 
 
-class DgfInsiderItemsResourceTest(BaseInsiderAuctionWebTest, DgfItemsResourceTestMixin):
+class InsiderItemsResourceTest(BaseInsiderAuctionWebTest, DgfItemsResourceTestMixin):
     initial_status = 'active.tendering'
 
 
