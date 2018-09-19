@@ -28,6 +28,7 @@ from openprocurement.auctions.core.models.schema import (
     Model,
     Period,
     RectificationPeriod,
+    dgfDocument as Document,
     Value,
     dgfCancellation as Cancellation,
     dgfComplaint as Complaint,
@@ -96,6 +97,8 @@ class Bid(BaseBid):
             'create': whitelist('tenderers', 'status', 'qualified', 'eligible'),
             'edit': whitelist('status', 'tenderers'),
         }
+
+    documents = ListType(ModelType(Document), default=list())
 
     status = StringType(choices=['active', 'draft', 'invalid'], default='active')
     qualified = BooleanType(required=True, choices=[True])
