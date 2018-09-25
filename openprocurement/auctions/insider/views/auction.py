@@ -8,6 +8,7 @@ from openprocurement.auctions.core.utils import (
     save_auction,
 )
 from openprocurement.auctions.core.views.mixins import AuctionAuctionResource
+from openprocurement.auctions.core.interfaces import IAuctionManager
 
 from openprocurement.auctions.insider.utils import invalidate_empty_bids, merge_auction_results
 from openprocurement.auctions.insider.validation import (
@@ -34,6 +35,7 @@ class InsiderAuctionAuctionResource(AuctionAuctionResource):
     @json_view(content_type="application/json", permission='auction', validators=(validate_auction_auction_data))
     def collection_post(self):
         auction = self.context.serialize()
+        adapter = self.request.registry.getAdapter(self.context, IAuctionManager)
         merge_auction_results(auction, self.request)
         apply_patch(self.request, save=False, src=self.request.validated['auction_src'])
         remove_draft_bids(self.request)
@@ -42,7 +44,7 @@ class InsiderAuctionAuctionResource(AuctionAuctionResource):
         if any([i.status == 'active' for i in auction.bids]):
             self.request.content_configurator.start_awarding()
         else:
-            auction.status = 'unsuccessful'
+            adapter.pendify_auction_status('unsuccessful')
         if save_auction(self.request):
             self.LOGGER.info('Report auction results',
                              extra=context_unpack(self.request, {'MESSAGE_ID': 'auction_auction_post'}))
