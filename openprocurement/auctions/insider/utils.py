@@ -5,9 +5,9 @@ from logging import getLogger
 from pkg_resources import get_distribution
 
 from openprocurement.auctions.core.utils import (
-    context_unpack,
-    get_now,
     TZ,
+    get_now,
+    log_auction_status_change
 )
 from openprocurement.auctions.core.models import AUCTION_STAND_STILL_TIME
 from openprocurement.auctions.core.interfaces import IAuctionManager
@@ -41,13 +41,11 @@ def check_auction_status(request):
     else:
         awards_statuses = set([""])
     if not awards_statuses.difference(set(['unsuccessful', 'cancelled'])):
-        LOGGER.info('Switched auction {} to {}'.format(auction.id, 'unsuccessful'),
-                    extra=context_unpack(request, {'MESSAGE_ID': 'switched_auction_unsuccessful'}))
         adapter.pendify_auction_status('unsuccessful')
+        log_auction_status_change(request, auction, auction.status)
     if auction.contracts and auction.contracts[-1].status == 'active':
-        LOGGER.info('Switched auction {} to {}'.format(auction.id, 'complete'),
-                    extra=context_unpack(request, {'MESSAGE_ID': 'switched_auction_complete'}))
         adapter.pendify_auction_status('complete')
+        log_auction_status_change(request, auction, auction.status)
 
 
 def check_status(request):
@@ -56,11 +54,10 @@ def check_status(request):
     for award in auction.awards:
         request.content_configurator.check_award_status(request, award, now)
     if auction.status == 'active.tendering' and auction.enquiryPeriod.endDate <= now:
-        LOGGER.info('Switched auction {} to {}'.format(auction['id'], 'active.auction'),
-                    extra=context_unpack(request, {'MESSAGE_ID': 'switched_auction_active.auction'}))
         auction.status = 'active.auction'
         auction.auctionUrl = generate_auction_url(request)
-        return
+        log_auction_status_change(request, auction, auction.status)
+        return True
     elif auction.status == 'active.awarded':
         standStillEnds = [
             a.complaintPeriod.endDate.astimezone(TZ)
@@ -68,7 +65,7 @@ def check_status(request):
             if a.complaintPeriod.endDate
         ]
         if not standStillEnds:
-            return
+            return True
         standStillEnd = max(standStillEnds)
         if standStillEnd <= now:
             check_auction_status(request)
