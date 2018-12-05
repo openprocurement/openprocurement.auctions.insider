@@ -9,11 +9,9 @@ from openprocurement.auctions.core.utils import (
 )
 from openprocurement.auctions.core.views.mixins import AuctionAuctionResource
 from openprocurement.auctions.core.interfaces import IAuctionManager
+from openprocurement.auctions.core.validation import validate_insider_auction_auction_data
 
 from openprocurement.auctions.insider.utils import invalidate_empty_bids, merge_auction_results
-from openprocurement.auctions.insider.validation import (
-    validate_auction_auction_data,
-)
 
 
 @opresource(name='dgfInsider:Auction Auction',
@@ -32,7 +30,7 @@ class InsiderAuctionAuctionResource(AuctionAuctionResource):
             return
         return {'data': self.request.validated['auction'].serialize("auction_view")}
 
-    @json_view(content_type="application/json", permission='auction', validators=(validate_auction_auction_data))
+    @json_view(content_type="application/json", permission='auction', validators=(validate_insider_auction_auction_data, ))
     def collection_post(self):
         auction = self.context.serialize()
         adapter = self.request.registry.getAdapter(self.context, IAuctionManager)
