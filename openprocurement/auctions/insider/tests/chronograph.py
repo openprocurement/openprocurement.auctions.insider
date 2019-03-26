@@ -23,24 +23,12 @@ from openprocurement.auctions.core.utils import get_now
 from openprocurement.auctions.insider.tests.base import (
     BaseInsiderAuctionWebTest, test_bids,
 )
-from openprocurement.auctions.insider.tests.blanks.chronograph_blanks import (
-    # InsiderAuctionAuctionPeriodResourceTest
-    set_auction_period,
-    reset_auction_period
-)
 
 
 class InsiderAuctionSwitchAuctionResourceTest(BaseInsiderAuctionWebTest):
     initial_bids = test_bids
 
     test_switch_to_auction = snitch(switch_to_auction)
-
-
-class InsiderAuctionAuctionPeriodResourceTest(BaseInsiderAuctionWebTest):
-    initial_bids = test_bids
-
-    test_set_auction_period = snitch(set_auction_period)
-    test_reset_auction_period = snitch(reset_auction_period)
 
 
 class InsiderAuctionAwardSwitchResourceTest(BaseInsiderAuctionWebTest, AuctionAwardSwitchResourceTestMixin):
@@ -174,7 +162,6 @@ class InsiderAuctionDontSwitchSuspendedAuctionResourceTest(BaseInsiderAuctionWeb
 def suite():
     tests = unittest.TestSuite()
     tests.addTest(unittest.makeSuite(InsiderAuctionSwitchAuctionResourceTest))
-    tests.addTest(unittest.makeSuite(InsiderAuctionAuctionPeriodResourceTest))
     tests.addTest(unittest.makeSuite(InsiderAuctionAwardSwitchResourceTest))
     tests.addTest(unittest.makeSuite(InsiderAuctionAwardSwitch2ResourceTest))
     tests.addTest(unittest.makeSuite(InsiderAuctionDontSwitchSuspendedAuction2ResourceTest))
