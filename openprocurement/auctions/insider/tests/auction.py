@@ -29,7 +29,10 @@ from openprocurement.auctions.insider.tests.blanks.auction_blanks import (
     post_auction_auction_not_changed,
     post_auction_auction_reversed,
     # InsiderAuctionNoBidsResourceTest
-    post_auction_no_bids
+    post_auction_no_bids,
+    # InsiderAuctionBridgePatchPeriod
+    set_auction_period,
+    reset_auction_period
 )
 from openprocurement.auctions.core.tests.auctions import (
     AuctionRectificationPeriodTestMixin,
@@ -108,9 +111,17 @@ class InsiderAuctionNoBidsResourceTest(BaseInsiderAuctionWebTest):
 
     test_post_auction_zero_bids = snitch(post_auction_no_bids)
 
+
 class InsiderAuctionRectificationPeriodTest(BaseInsiderAuctionWebTest, AuctionRectificationPeriodTestMixin):
     initial_status = 'active.tendering'
     initial_bids = test_bids
+
+
+class InsiderAuctionBridgePatchPeriod(BaseInsiderAuctionWebTest):
+    initial_status = 'active.tendering'
+
+    test_set_auction_period = snitch(set_auction_period)
+    test_reset_auction_period = snitch(reset_auction_period)
 
 
 def suite():
@@ -121,6 +132,7 @@ def suite():
     tests.addTest(unittest.makeSuite(InsiderAuctionSameValueAuctionResourceTest))
     tests.addTest(unittest.makeSuite(InsiderAuctionNoBidsResourceTest))
     tests.addTest(unittest.makeSuite(InsiderAuctionRectificationPeriodTest))
+    tests.addTest(unittest.makeSuite(InsiderAuctionBridgePatchPeriod))
     return tests
 
 
